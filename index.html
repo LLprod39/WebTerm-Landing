@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="WebTerm — self-hosted ops workspace: серверы, SSH, AI, Studio, Kubernetes. Open source, early stage." />
+  <meta name="theme-color" content="#09090b" />
+  <title>WebTerm</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="frame" aria-hidden="true">
+    <span class="frame-c tl"></span><span class="frame-c tr"></span>
+    <span class="frame-c bl"></span><span class="frame-c br"></span>
+  </div>
+
+  <header class="top">
+    <div class="shell top-inner">
+      <a class="logo" href="#top">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7.5L10 12L4 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+          <path d="M12 16.5H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/>
+        </svg>
+        <span>WebTerm</span>
+      </a>
+      <nav class="top-nav" id="primary-nav">
+        <a href="#map">Карта</a>
+        <a href="#depth">Глубже</a>
+        <a href="#install">Install</a>
+        <a href="#truth">Статус</a>
+      </nav>
+      <div class="top-right">
+        <a class="link-quiet" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">
+          <span class="gh-dot"></span> github.com/LLprod39/WebTerm
+        </a>
+        <a class="btn-hard" href="#install">Поставить</a>
+        <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="shell hero-layout">
+        <div class="hero-meta">
+          <span class="meta-item">self-hosted</span>
+          <span class="meta-item">apache 2.0</span>
+          <span class="meta-item warn">early / unstable edges</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="t-line">Одна консоль.</span>
+          <span class="t-line">Серверы. SSH.</span>
+          <span class="t-line accent">AI. Kubernetes.</span>
+        </h1>
+
+        <div class="hero-bottom">
+          <p class="hero-text">
+            WebTerm — on-prem workspace для тех, кто держит инфраструктуру руками:
+            инвентарь, терминал, пайплайны, агенты, кубер, доступы.
+            Проект молодой. Уже широкий. Без слоганов про «новое поколение».
+          </p>
+          <div class="hero-actions">
+            <a class="btn-hard lg" href="#install">Install в 3 строки</a>
+            <a class="btn-ghost lg" href="#map">Что внутри →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- giant background index -->
+      <div class="hero-index" aria-hidden="true">
+        <div class="idx-col">
+          <span>01 servers</span><span>02 terminal</span><span>03 studio</span>
+          <span>04 agents</span><span>05 kubernetes</span><span>06 mars</span>
+        </div>
+        <div class="idx-col delay">
+          <span>07 chat</span><span>08 plugins</span><span>09 access</span>
+          <span>10 audit</span><span>11 mcp</span><span>12 dashboard</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>servers</span><span class="tick">◆</span>
+        <span>multi-tab ssh</span><span class="tick">◆</span>
+        <span>sftp + editor</span><span class="tick">◆</span>
+        <span>ai nova</span><span class="tick">◆</span>
+        <span>studio pipelines</span><span class="tick">◆</span>
+        <span>mcp hub</span><span class="tick">◆</span>
+        <span>skills</span><span class="tick">◆</span>
+        <span>kubernetes</span><span class="tick">◆</span>
+        <span>fleet / devtron</span><span class="tick">◆</span>
+        <span>mars guided</span><span class="tick">◆</span>
+        <span>agents + audit</span><span class="tick">◆</span>
+        <span>.wtp plugins</span><span class="tick">◆</span>
+        <span>rbac / sso</span><span class="tick">◆</span>
+        <span>servers</span><span class="tick">◆</span>
+        <span>multi-tab ssh</span><span class="tick">◆</span>
+        <span>sftp + editor</span><span class="tick">◆</span>
+        <span>ai nova</span><span class="tick">◆</span>
+        <span>studio pipelines</span><span class="tick">◆</span>
+        <span>mcp hub</span><span class="tick">◆</span>
+        <span>skills</span><span class="tick">◆</span>
+        <span>kubernetes</span><span class="tick">◆</span>
+        <span>fleet / devtron</span><span class="tick">◆</span>
+        <span>mars guided</span><span class="tick">◆</span>
+        <span>agents + audit</span><span class="tick">◆</span>
+        <span>.wtp plugins</span><span class="tick">◆</span>
+        <span>rbac / sso</span><span class="tick">◆</span>
+      </div>
+    </div>
+
+    <!-- PRODUCT MAP — interactive -->
+    <section class="block" id="map">
+      <div class="shell">
+        <div class="block-head">
+          <p class="kicker"><span>// 01</span> карта продукта</p>
+          <h2>Не набор иконок — рабочие зоны</h2>
+        </div>
+
+        <div class="explorer">
+          <div class="explorer-rail" role="tablist" aria-label="Модули">
+            <button class="rail-btn is-on" role="tab" aria-selected="true" data-panel="servers">
+              <span class="n">01</span>
+              <span class="l">Серверы</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="terminal">
+              <span class="n">02</span>
+              <span class="l">Терминал</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="studio">
+              <span class="n">03</span>
+              <span class="l">Studio</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="agents">
+              <span class="n">04</span>
+              <span class="l">Агенты / AI</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="k8s">
+              <span class="n">05</span>
+              <span class="l">Kubernetes</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="mars">
+              <span class="n">06</span>
+              <span class="l">MARS</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="access">
+              <span class="n">07</span>
+              <span class="l">Доступы</span>
+            </button>
+            <button class="rail-btn" role="tab" aria-selected="false" data-panel="plugins">
+              <span class="n">08</span>
+              <span class="l">Плагины</span>
+            </button>
+          </div>
+
+          <div class="explorer-stage">
+            <!-- SERVERS -->
+            <article class="panel is-on" id="panel-servers" data-panel="servers">
+              <div class="panel-copy">
+                <h3>Инвентарь, не таблица ради таблицы</h3>
+                <p>Хосты, группы, теги, bulk-операции, health, избранное. SSH-ключ или пароль, sudo-политики, заметки. То, с чего начинается любая смена.</p>
+                <ul>
+                  <li>группы по командам / env</li>
+                  <li>мониторинг и алерты</li>
+                  <li>server memory / контекст</li>
+                  <li>массовые действия</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>servers · inventory</span></div>
+                  <div class="vw-body inventory">
+                    <div class="inv-head"><span>HOST</span><span>ADDR</span><span>STATE</span><span></span></div>
+                    <div class="inv-row"><b>prod-api-01</b><code>10.0.12.4</code><em class="g">online</em><span>ssh</span></div>
+                    <div class="inv-row"><b>db-primary</b><code>10.0.12.18</code><em class="g">online</em><span>ssh</span></div>
+                    <div class="inv-row dim"><b>worker-03</b><code>10.0.12.41</code><em class="y">warn</em><span>disk</span></div>
+                    <div class="inv-row"><b>edge-gw</b><code>10.0.1.2</code><em class="g">online</em><span>ssh</span></div>
+                    <div class="inv-foot">24 hosts · 3 groups · 2 alerts open</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- TERMINAL -->
+            <article class="panel" id="panel-terminal" data-panel="terminal" hidden>
+              <div class="panel-copy">
+                <h3>SSH-workspace в браузере</h3>
+                <p>Не «ещё один web SSH». Multi-tab xterm, SFTP, Linux-обзор, GUI-редактор вместо nano/vim, темы. Рядом — AI-панель Nova с контекстом сессии и лимитами sudo.</p>
+                <ul>
+                  <li>Django Channels + xterm.js</li>
+                  <li>SFTP / transfer queue</li>
+                  <li>AI Nova · session context</li>
+                  <li>guarded commands</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window crt">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>terminal · prod-api-01 · tab 2</span></div>
+                  <div class="vw-body term">
+                    <div class="term-cols">
+                      <div class="term-main">
+                        <div><span class="u">ops@prod</span>:<span class="p">~/app</span>$ systemctl status nginx -l --no-pager</div>
+                        <div class="muted">● nginx.service - A high performance web server</div>
+                        <div class="ok">   Active: active (running)</div>
+                        <div><span class="u">ops@prod</span>:<span class="p">~/app</span>$ tail -f /var/log/nginx/error.log</div>
+                        <div class="muted">… connect() failed (111)</div>
+                        <div><span class="u">ops@prod</span>:<span class="p">~/app</span>$ <span class="blink">▌</span></div>
+                      </div>
+                      <div class="term-ai">
+                        <div class="ai-h">NOVA</div>
+                        <div class="ai-b">Upstream down на :3001. Проверь process + reload после фикса.</div>
+                        <div class="ai-f">sudo: limited · cwd shared</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- STUDIO -->
+            <article class="panel" id="panel-studio" data-panel="studio" hidden>
+              <div class="panel-copy">
+                <h3>Studio — пайплайны, не зоопарк cron</h3>
+                <p>Визуальный граф: trigger → шаги → approval → notify. Расписание, webhooks, MCP-инструменты, skills, drafts на ревью, история runs.</p>
+                <ul>
+                  <li>pipeline editor</li>
+                  <li>MCP registry / hub</li>
+                  <li>skills authoring</li>
+                  <li>Telegram / email</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>studio · disk-watch</span></div>
+                  <div class="vw-body flow">
+                    <div class="node"><small>TRIGGER</small>cron 0 */6</div>
+                    <div class="wire"></div>
+                    <div class="node"><small>SSH</small>df -h workers</div>
+                    <div class="wire"></div>
+                    <div class="node"><small>IF</small>use% &gt; 80</div>
+                    <div class="wire"></div>
+                    <div class="node accent-n"><small>NOTIFY</small>telegram ops</div>
+                    <div class="flow-meta">last run ok · 42s · mcp:3 · skills:2</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- AGENTS -->
+            <article class="panel" id="panel-agents" data-panel="agents" hidden>
+              <div class="panel-copy">
+                <h3>Агенты с логом, не чёрный ящик</h3>
+                <p>Конфиги, прогоны, шаги, live events, отчёты. LLM-провайдеры в настройках. AI рядом с audit — чтобы было что показать на ретро.</p>
+                <ul>
+                  <li>agent configs / profiles</li>
+                  <li>run timeline + artifacts</li>
+                  <li>chat-оркестратор</li>
+                  <li>providers & limits</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>agents · run #284</span></div>
+                  <div class="vw-body agentlog">
+                    <div><time>12:01</time> plan · check nginx + disk on worker pool</div>
+                    <div><time>12:01</time> tool · list_servers → 4</div>
+                    <div><time>12:02</time> tool · run_command worker-01 «df -h»</div>
+                    <div class="ok"><time>12:02</time> result · / 58% used</div>
+                    <div><time>12:03</time> report draft · awaiting review</div>
+                    <div class="agent-stat">status running · audit on · model configured</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- K8S -->
+            <article class="panel" id="panel-k8s" data-panel="k8s" hidden>
+              <div class="panel-copy">
+                <h3>Kubernetes в том же workspace</h3>
+                <p>Кластеры, pods, logs, network, admin workspace, watch. Вокруг — Fleet / Devtron по readiness-гейтам. Не «заменим Rancher», а ops-срез рядом с VM и SSH.</p>
+                <ul>
+                  <li>inventory / pods / logs</li>
+                  <li>admin actions</li>
+                  <li>Fleet · Devtron surfaces</li>
+                  <li>sidebar readiness gates</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>kubernetes · prod-cluster</span></div>
+                  <div class="vw-body k8s">
+                    <div class="kpis">
+                      <div><span>ns</span><strong>14</strong></div>
+                      <div><span>pods</span><strong>128</strong></div>
+                      <div><span>alerts</span><strong class="y">2</strong></div>
+                    </div>
+                    <div class="pod"><i class="g"></i> api-7f9c… Running 2/2</div>
+                    <div class="pod"><i class="g"></i> worker-5d2… Running 1/1</div>
+                    <div class="pod"><i class="y"></i> job-cleanup CrashLoop</div>
+                    <div class="pod muted"><i></i> redis-0 Running 1/1</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- MARS -->
+            <article class="panel" id="panel-mars" data-panel="mars" hidden>
+              <div class="panel-copy">
+                <h3>MARS — guided AI workflow</h3>
+                <p>Не разовый чат. Interview → plan → execution в personal workspace. Для задач, где нужен ведомый прогон с историей.</p>
+                <ul>
+                  <li>guided multi-step flow</li>
+                  <li>personal workspaces</li>
+                  <li>run pages / phases</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>mars · guided run</span></div>
+                  <div class="vw-body mars">
+                    <div class="step on"><span>1</span> interview</div>
+                    <div class="step on"><span>2</span> plan</div>
+                    <div class="step active"><span>3</span> execute</div>
+                    <div class="step"><span>4</span> review</div>
+                    <div class="mars-note">workspace user_22 · worker phase: tools</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- ACCESS -->
+            <article class="panel" id="panel-access" data-panel="access" hidden>
+              <div class="panel-copy">
+                <h3>Доступы, секреты, audit</h3>
+                <p>Пользователи, группы, feature gates, permissions, сессии. Локальный логин или SSO / Keycloak. Audit и activity — рядом, не «где-то в логах nginx».</p>
+                <ul>
+                  <li>RBAC + feature gates</li>
+                  <li>SSO / Keycloak optional</li>
+                  <li>audit / activity</li>
+                  <li>secrets & runtime limits</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>settings · access</span></div>
+                  <div class="vw-body access">
+                    <div class="acc-row"><b>admin</b><span>staff</span><span class="g">sessions 2</span></div>
+                    <div class="acc-row"><b>ops-team</b><span>group</span><span>servers · terminal · studio</span></div>
+                    <div class="acc-row"><b>k8s-ro</b><span>group</span><span>kubernetes read</span></div>
+                    <div class="acc-row dim"><b>sso</b><span>keycloak</span><span>optional</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- PLUGINS -->
+            <article class="panel" id="panel-plugins" data-panel="plugins" hidden>
+              <div class="panel-copy">
+                <h3>Плагины без публичного магазина</h3>
+                <p>Пакеты <code>.wtp</code>: страницы, dashboard widgets, ноды Studio, tools, hooks. Приватный каталог для своей команды — расширяешь продукт, не выходя в SaaS marketplace.</p>
+                <ul>
+                  <li>.wtp packages</li>
+                  <li>private catalog</li>
+                  <li>studio nodes / widgets</li>
+                </ul>
+              </div>
+              <div class="panel-viz" aria-hidden="true">
+                <div class="viz-window">
+                  <div class="vw-bar"><i></i><i></i><i></i><span>plugins · catalog</span></div>
+                  <div class="vw-body plugs">
+                    <div class="plug"><b>ops-board.wtp</b><span>dashboard widgets</span></div>
+                    <div class="plug"><b>notify-extra.wtp</b><span>studio node</span></div>
+                    <div class="plug"><b>cmdb-bridge.wtp</b><span>connector</span></div>
+                    <div class="plug muted"><b>+ install package</b><span>local upload</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPTH — dense rows -->
+    <section class="block band" id="depth">
+      <div class="shell">
+        <div class="block-head">
+          <p class="kicker"><span>// 02</span> ещё плотнее</p>
+          <h2>Что ещё есть, если копнуть</h2>
+        </div>
+
+        <div class="spec">
+          <div class="spec-row">
+            <div class="spec-id">A</div>
+            <div class="spec-title">Панель</div>
+            <div class="spec-body">User / admin dashboard: серверы, алерты, запуски Studio и агентов, быстрые переходы. Виджеты расширяются плагинами.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-id">B</div>
+            <div class="spec-title">Чат-оркестратор</div>
+            <div class="spec-body">Диалог с ассистентом в контексте платформы — когда быстрее спросить, чем собирать граф руками.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-id">C</div>
+            <div class="spec-title">Мониторинг</div>
+            <div class="spec-body">Health checks, алерты, watcher drafts, operational history по серверам — рядом с инвентарём, не отдельным Zabbix-клоном.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-id">D</div>
+            <div class="spec-title">Безопасность runtime</div>
+            <div class="spec-body">Execution policy, sandbox rules, egress redaction, review gates, runtime limits. AI не «бог в root» по умолчанию.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-id">E</div>
+            <div class="spec-title">Стек</div>
+            <div class="spec-body">Django + Channels · React/Vite/TS · Postgres · Redis · Celery · Docker Compose · nginx. MCP, LLM-провайдеры, Telegram, Keycloak — по необходимости.</div>
+          </div>
+        </div>
+
+        <div class="who">
+          <div class="who-item">
+            <h3>DevOps / SRE</h3>
+            <p>Один вход к хостам и куберу. Автоматизация в Studio. Меньше прыжков между тулзами.</p>
+          </div>
+          <div class="who-item">
+            <h3>Админы / NOC</h3>
+            <p>Инвентарь, терминал, алерты, права. Можно не раздавать raw SSH всем подряд.</p>
+          </div>
+          <div class="who-item">
+            <h3>Команды с AI в ops</h3>
+            <p>Агенты и MARS с логом и политиками — когда LLM уже трогают прод.</p>
+          </div>
+          <div class="who-item">
+            <h3>Self-hosted</h3>
+            <p>Всё у себя. Compose или install-скрипт. Без обязательного облака.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="block" id="install">
+      <div class="shell">
+        <div class="block-head">
+          <p class="kicker"><span>// 03</span> install</p>
+          <h2>Скопировал. Вставил. Поднял.</h2>
+          <p class="sub">
+            Репозиторий
+            <a href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">github.com/LLprod39/WebTerm</a>
+            · вместо <code>YOUR_HOST</code> — IP или DNS
+          </p>
+        </div>
+
+        <div class="install">
+          <div class="install-tabs" role="tablist">
+            <button class="itab is-on" data-tab="prod" aria-selected="true">Production Linux</button>
+            <button class="itab" data-tab="docker" aria-selected="false">Docker Compose</button>
+            <button class="itab" data-tab="dev" aria-selected="false">Dev split</button>
+          </div>
+
+          <div class="install-body">
+            <div class="ipanel is-on" id="ipanel-prod">
+              <p class="inote"><code>install-server.sh</code> — Docker при необходимости, clone, env, production stack, admin.</p>
+              <div class="code">
+                <div class="code-top">
+                  <span>bash</span>
+                  <button type="button" class="copy-btn" data-copy-target="code-prod">copy</button>
+                </div>
+                <pre id="code-prod"><code>curl -fsSL https://raw.githubusercontent.com/LLprod39/WebTerm/test/install-server.sh -o install-server.sh
+chmod +x install-server.sh
+./install-server.sh --repo https://github.com/LLprod39/WebTerm.git --dir /opt/webtrerm --host YOUR_HOST</code></pre>
+              </div>
+              <p class="ihint">пример: <code>--host 10.0.0.15</code> · https: <code>--https</code></p>
+            </div>
+
+            <div class="ipanel" id="ipanel-docker" hidden>
+              <p class="inote">Lab / local full stack.</p>
+              <div class="code">
+                <div class="code-top">
+                  <span>bash</span>
+                  <button type="button" class="copy-btn" data-copy-target="code-docker">copy</button>
+                </div>
+                <pre id="code-docker"><code>git clone https://github.com/LLprod39/WebTerm.git
+cd WebTerm
+cp .env.example .env
+docker compose up -d --build</code></pre>
+              </div>
+              <p class="ihint">health: <code>curl http://127.0.0.1:8080/api/health/</code></p>
+            </div>
+
+            <div class="ipanel" id="ipanel-dev" hidden>
+              <p class="inote">Backend и frontend раздельно.</p>
+              <div class="code">
+                <div class="code-top">
+                  <span>backend</span>
+                  <button type="button" class="copy-btn" data-copy-target="code-dev-be">copy</button>
+                </div>
+                <pre id="code-dev-be"><code>git clone https://github.com/LLprod39/WebTerm.git && cd WebTerm
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements-mini.txt
+python manage.py migrate && python manage.py createsuperuser
+python manage.py runserver</code></pre>
+              </div>
+              <div class="code" style="margin-top:0.75rem">
+                <div class="code-top">
+                  <span>frontend</span>
+                  <button type="button" class="copy-btn" data-copy-target="code-dev-fe">copy</button>
+                </div>
+                <pre id="code-dev-fe"><code>cd frontend && npm ci && npm run dev</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUTH -->
+    <section class="block band" id="truth">
+      <div class="shell truth">
+        <p class="kicker"><span>// 04</span> без пиздежа</p>
+        <h2>Проект только разгоняется</h2>
+        <div class="truth-grid">
+          <p>
+            Модулей уже много: серверы, терминал, Studio, агенты, Kubernetes, MARS, плагины, доступы.
+            Часть сценариев крепче, часть ещё сырая. API и UI будут ломаться и расти — это early stage, не enterprise brochure.
+          </p>
+          <p>
+            Если вы админ или DevOps и вам откликается идея одной on-prem консоли —
+            клонируйте, ставьте, смотрите код, кидайте issues. Маркетинга тут нет. Есть репозиторий.
+          </p>
+        </div>
+        <div class="truth-actions">
+          <a class="btn-hard lg" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">Открыть GitHub</a>
+          <a class="btn-ghost lg" href="#install">К командам</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="shell foot-inner">
+      <div class="foot-l">
+        <strong>WebTerm</strong>
+        <span>self-hosted ops workspace</span>
+      </div>
+      <div class="foot-c">Apache License 2.0</div>
+      <div class="foot-r">
+        <a href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>copied</div>
+  <script src="js/main.js"></script>
+</body>
+</html>
