@@ -738,7 +738,6 @@ code {
   align-items: center;
   gap: 0.4rem;
   min-height: 200px;
-  content: "";
 }
 
 .node {

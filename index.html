@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="WebTerm — self-hosted ops workspace: серверы, SSH, AI, Studio, Kubernetes. Open source, early stage." />
+  <meta name="description" content="WebTerm — self-hosted платформа для управления инфраструктурой: инвентарь серверов, SSH-терминал в браузере, пайплайны, AI-агенты, Kubernetes. Open source, Apache 2.0." />
   <meta name="theme-color" content="#09090b" />
-  <title>WebTerm</title>
+  <title>WebTerm — self-hosted ops workspace</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,16 +28,16 @@
         <span>WebTerm</span>
       </a>
       <nav class="top-nav" id="primary-nav">
-        <a href="#map">Карта</a>
-        <a href="#depth">Глубже</a>
-        <a href="#install">Install</a>
+        <a href="#map">Возможности</a>
+        <a href="#depth">Подробнее</a>
+        <a href="#install">Установка</a>
         <a href="#truth">Статус</a>
       </nav>
       <div class="top-right">
         <a class="link-quiet" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">
           <span class="gh-dot"></span> github.com/LLprod39/WebTerm
         </a>
-        <a class="btn-hard" href="#install">Поставить</a>
+        <a class="btn-hard" href="#install">Установить</a>
         <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="primary-nav">
           <span></span><span></span>
         </button>
@@ -52,7 +52,7 @@
         <div class="hero-meta">
           <span class="meta-item">self-hosted</span>
           <span class="meta-item">apache 2.0</span>
-          <span class="meta-item warn">early / unstable edges</span>
+          <span class="meta-item warn">early stage</span>
         </div>
 
         <h1 class="hero-title">
@@ -63,12 +63,13 @@
 
         <div class="hero-bottom">
           <p class="hero-text">
-            WebTerm — on-prem workspace для тех, кто держит инфраструктуру руками:
-            инвентарь, терминал, пайплайны, агенты, кубер, доступы.
-            Проект молодой. Уже широкий. Без слоганов про «новое поколение».
+            WebTerm — self-hosted платформа для тех, кто управляет инфраструктурой сам:
+            инвентарь серверов, SSH-терминал в браузере, пайплайны автоматизации,
+            AI-агенты, Kubernetes и контроль доступов — в одном workspace,
+            развёрнутом на вашем железе.
           </p>
           <div class="hero-actions">
-            <a class="btn-hard lg" href="#install">Install в 3 строки</a>
+            <a class="btn-hard lg" href="#install">Установка в три команды</a>
             <a class="btn-ghost lg" href="#map">Что внутри →</a>
           </div>
         </div>
@@ -124,7 +125,7 @@
       <div class="shell">
         <div class="block-head">
           <p class="kicker"><span>// 01</span> карта продукта</p>
-          <h2>Не набор иконок — рабочие зоны</h2>
+          <h2>Восемь модулей — один workspace</h2>
         </div>
 
         <div class="explorer">
@@ -167,8 +168,8 @@
             <!-- SERVERS -->
             <article class="panel is-on" id="panel-servers" data-panel="servers">
               <div class="panel-copy">
-                <h3>Инвентарь, не таблица ради таблицы</h3>
-                <p>Хосты, группы, теги, bulk-операции, health, избранное. SSH-ключ или пароль, sudo-политики, заметки. То, с чего начинается любая смена.</p>
+                <h3>Инвентарь серверов</h3>
+                <p>Хосты, группы, теги, массовые операции, health-статусы, избранное. Подключение по SSH-ключу или паролю, sudo-политики, заметки по каждому хосту.</p>
                 <ul>
                   <li>группы по командам / env</li>
                   <li>мониторинг и алерты</li>
@@ -194,8 +195,8 @@
             <!-- TERMINAL -->
             <article class="panel" id="panel-terminal" data-panel="terminal" hidden>
               <div class="panel-copy">
-                <h3>SSH-workspace в браузере</h3>
-                <p>Не «ещё один web SSH». Multi-tab xterm, SFTP, Linux-обзор, GUI-редактор вместо nano/vim, темы. Рядом — AI-панель Nova с контекстом сессии и лимитами sudo.</p>
+                <h3>SSH-терминал в браузере</h3>
+                <p>Полноценный терминал с вкладками, SFTP-менеджер, обзор системы, графический редактор файлов, темы. Рядом — AI-панель Nova: видит контекст сессии и работает в рамках sudo-политик.</p>
                 <ul>
                   <li>Django Channels + xterm.js</li>
                   <li>SFTP / transfer queue</li>
@@ -230,8 +231,8 @@
             <!-- STUDIO -->
             <article class="panel" id="panel-studio" data-panel="studio" hidden>
               <div class="panel-copy">
-                <h3>Studio — пайплайны, не зоопарк cron</h3>
-                <p>Визуальный граф: trigger → шаги → approval → notify. Расписание, webhooks, MCP-инструменты, skills, drafts на ревью, история runs.</p>
+                <h3>Studio — визуальные пайплайны</h3>
+                <p>Автоматизация в виде графа: триггер → шаги → согласование → уведомление. Запуск по расписанию или webhook, MCP-инструменты, skills, черновики на ревью, история запусков.</p>
                 <ul>
                   <li>pipeline editor</li>
                   <li>MCP registry / hub</li>
@@ -259,8 +260,8 @@
             <!-- AGENTS -->
             <article class="panel" id="panel-agents" data-panel="agents" hidden>
               <div class="panel-copy">
-                <h3>Агенты с логом, не чёрный ящик</h3>
-                <p>Конфиги, прогоны, шаги, live events, отчёты. LLM-провайдеры в настройках. AI рядом с audit — чтобы было что показать на ретро.</p>
+                <h3>AI-агенты с полным логом</h3>
+                <p>Конфигурации, запуски, пошаговые события в реальном времени, отчёты. LLM-провайдер настраивается в панели. Каждое действие агента фиксируется в audit-логе.</p>
                 <ul>
                   <li>agent configs / profiles</li>
                   <li>run timeline + artifacts</li>
@@ -287,7 +288,7 @@
             <article class="panel" id="panel-k8s" data-panel="k8s" hidden>
               <div class="panel-copy">
                 <h3>Kubernetes в том же workspace</h3>
-                <p>Кластеры, pods, logs, network, admin workspace, watch. Вокруг — Fleet / Devtron по readiness-гейтам. Не «заменим Rancher», а ops-срез рядом с VM и SSH.</p>
+                <p>Кластеры, поды, логи, сеть, административные действия — в том же интерфейсе, где серверы и SSH. Fleet и Devtron подключаются отдельно, по readiness-гейтам.</p>
                 <ul>
                   <li>inventory / pods / logs</li>
                   <li>admin actions</li>
@@ -317,7 +318,7 @@
             <article class="panel" id="panel-mars" data-panel="mars" hidden>
               <div class="panel-copy">
                 <h3>MARS — guided AI workflow</h3>
-                <p>Не разовый чат. Interview → plan → execution в personal workspace. Для задач, где нужен ведомый прогон с историей.</p>
+                <p>Пошаговый AI-процесс: интервью → план → выполнение → ревью в персональном workspace. Для задач, где нужен управляемый прогон с историей, а не разовый чат.</p>
                 <ul>
                   <li>guided multi-step flow</li>
                   <li>personal workspaces</li>
@@ -342,7 +343,7 @@
             <article class="panel" id="panel-access" data-panel="access" hidden>
               <div class="panel-copy">
                 <h3>Доступы, секреты, audit</h3>
-                <p>Пользователи, группы, feature gates, permissions, сессии. Локальный логин или SSO / Keycloak. Audit и activity — рядом, не «где-то в логах nginx».</p>
+                <p>Пользователи, группы, feature gates, права, сессии. Локальный логин или SSO через Keycloak. Журнал действий и активность пользователей — в том же интерфейсе.</p>
                 <ul>
                   <li>RBAC + feature gates</li>
                   <li>SSO / Keycloak optional</li>
@@ -366,8 +367,8 @@
             <!-- PLUGINS -->
             <article class="panel" id="panel-plugins" data-panel="plugins" hidden>
               <div class="panel-copy">
-                <h3>Плагины без публичного магазина</h3>
-                <p>Пакеты <code>.wtp</code>: страницы, dashboard widgets, ноды Studio, tools, hooks. Приватный каталог для своей команды — расширяешь продукт, не выходя в SaaS marketplace.</p>
+                <h3>Плагины и приватный каталог</h3>
+                <p>Пакеты <code>.wtp</code>: страницы, виджеты дашборда, ноды Studio, инструменты, хуки. Устанавливаются из приватного каталога вашей команды — публичный маркетплейс не нужен.</p>
                 <ul>
                   <li>.wtp packages</li>
                   <li>private catalog</li>
@@ -395,15 +396,15 @@
     <section class="block band" id="depth">
       <div class="shell">
         <div class="block-head">
-          <p class="kicker"><span>// 02</span> ещё плотнее</p>
-          <h2>Что ещё есть, если копнуть</h2>
+          <p class="kicker"><span>// 02</span> подробнее</p>
+          <h2>Что ещё внутри</h2>
         </div>
 
         <div class="spec">
           <div class="spec-row">
             <div class="spec-id">A</div>
             <div class="spec-title">Панель</div>
-            <div class="spec-body">User / admin dashboard: серверы, алерты, запуски Studio и агентов, быстрые переходы. Виджеты расширяются плагинами.</div>
+            <div class="spec-body">Дашборд пользователя и администратора: серверы, алерты, запуски Studio и агентов, быстрые переходы. Виджеты расширяются плагинами.</div>
           </div>
           <div class="spec-row">
             <div class="spec-id">B</div>
@@ -413,12 +414,12 @@
           <div class="spec-row">
             <div class="spec-id">C</div>
             <div class="spec-title">Мониторинг</div>
-            <div class="spec-body">Health checks, алерты, watcher drafts, operational history по серверам — рядом с инвентарём, не отдельным Zabbix-клоном.</div>
+            <div class="spec-body">Health-чеки, алерты, черновики watcher'ов, операционная история по серверам — встроено рядом с инвентарём.</div>
           </div>
           <div class="spec-row">
             <div class="spec-id">D</div>
             <div class="spec-title">Безопасность runtime</div>
-            <div class="spec-body">Execution policy, sandbox rules, egress redaction, review gates, runtime limits. AI не «бог в root» по умолчанию.</div>
+            <div class="spec-body">Execution policy, sandbox-правила, маскирование чувствительных данных, review-гейты, runtime-лимиты. AI по умолчанию работает с ограниченными правами, а не с root-доступом.</div>
           </div>
           <div class="spec-row">
             <div class="spec-id">E</div>
@@ -430,19 +431,19 @@
         <div class="who">
           <div class="who-item">
             <h3>DevOps / SRE</h3>
-            <p>Один вход к хостам и куберу. Автоматизация в Studio. Меньше прыжков между тулзами.</p>
+            <p>Одна точка входа к хостам и Kubernetes. Автоматизация в Studio. Меньше переключений между инструментами.</p>
           </div>
           <div class="who-item">
             <h3>Админы / NOC</h3>
-            <p>Инвентарь, терминал, алерты, права. Можно не раздавать raw SSH всем подряд.</p>
+            <p>Инвентарь, терминал, алерты, права. Доступ к серверам через платформу — без раздачи прямого SSH каждому.</p>
           </div>
           <div class="who-item">
             <h3>Команды с AI в ops</h3>
-            <p>Агенты и MARS с логом и политиками — когда LLM уже трогают прод.</p>
+            <p>Агенты и MARS с логами и политиками — контроль над тем, что AI делает в вашей инфраструктуре.</p>
           </div>
           <div class="who-item">
             <h3>Self-hosted</h3>
-            <p>Всё у себя. Compose или install-скрипт. Без обязательного облака.</p>
+            <p>Всё разворачивается у вас: Docker Compose или install-скрипт. Никакого обязательного облака.</p>
           </div>
         </div>
       </div>
@@ -452,8 +453,8 @@
     <section class="block" id="install">
       <div class="shell">
         <div class="block-head">
-          <p class="kicker"><span>// 03</span> install</p>
-          <h2>Скопировал. Вставил. Поднял.</h2>
+          <p class="kicker"><span>// 03</span> установка</p>
+          <h2>Три команды до запуска</h2>
           <p class="sub">
             Репозиторий
             <a href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">github.com/LLprod39/WebTerm</a>
@@ -470,7 +471,7 @@
 
           <div class="install-body">
             <div class="ipanel is-on" id="ipanel-prod">
-              <p class="inote"><code>install-server.sh</code> — Docker при необходимости, clone, env, production stack, admin.</p>
+              <p class="inote"><code>install-server.sh</code> сам ставит Docker (если его нет), клонирует репозиторий, настраивает окружение и поднимает production-стек с учётной записью администратора.</p>
               <div class="code">
                 <div class="code-top">
                   <span>bash</span>
@@ -478,13 +479,13 @@
                 </div>
                 <pre id="code-prod"><code>curl -fsSL https://raw.githubusercontent.com/LLprod39/WebTerm/test/install-server.sh -o install-server.sh
 chmod +x install-server.sh
-./install-server.sh --repo https://github.com/LLprod39/WebTerm.git --dir /opt/webtrerm --host YOUR_HOST</code></pre>
+./install-server.sh --repo https://github.com/LLprod39/WebTerm.git --dir /opt/webterm --host YOUR_HOST</code></pre>
               </div>
               <p class="ihint">пример: <code>--host 10.0.0.15</code> · https: <code>--https</code></p>
             </div>
 
             <div class="ipanel" id="ipanel-docker" hidden>
-              <p class="inote">Lab / local full stack.</p>
+              <p class="inote">Полный стек локально — для теста или лабораторного стенда.</p>
               <div class="code">
                 <div class="code-top">
                   <span>bash</span>
@@ -499,7 +500,7 @@ docker compose up -d --build</code></pre>
             </div>
 
             <div class="ipanel" id="ipanel-dev" hidden>
-              <p class="inote">Backend и frontend раздельно.</p>
+              <p class="inote">Backend и frontend раздельно — вариант для разработки.</p>
               <div class="code">
                 <div class="code-top">
                   <span>backend</span>
@@ -527,21 +528,23 @@ python manage.py runserver</code></pre>
     <!-- TRUTH -->
     <section class="block band" id="truth">
       <div class="shell truth">
-        <p class="kicker"><span>// 04</span> без пиздежа</p>
-        <h2>Проект только разгоняется</h2>
+        <p class="kicker"><span>// 04</span> статус проекта</p>
+        <h2>Проект в активной разработке</h2>
         <div class="truth-grid">
           <p>
             Модулей уже много: серверы, терминал, Studio, агенты, Kubernetes, MARS, плагины, доступы.
-            Часть сценариев крепче, часть ещё сырая. API и UI будут ломаться и расти — это early stage, не enterprise brochure.
+            Часть сценариев уже стабильна, часть ещё сырая. API и интерфейс будут меняться —
+            это ранняя стадия, и мы говорим об этом честно.
           </p>
           <p>
-            Если вы админ или DevOps и вам откликается идея одной on-prem консоли —
-            клонируйте, ставьте, смотрите код, кидайте issues. Маркетинга тут нет. Есть репозиторий.
+            Если вы админ или DevOps и вам близка идея одной self-hosted консоли —
+            клонируйте репозиторий, разверните у себя и посмотрите сами.
+            Баги и предложения — в issues на GitHub.
           </p>
         </div>
         <div class="truth-actions">
           <a class="btn-hard lg" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">Открыть GitHub</a>
-          <a class="btn-ghost lg" href="#install">К командам</a>
+          <a class="btn-ghost lg" href="#install">К установке</a>
         </div>
       </div>
     </section>
