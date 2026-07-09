@@ -331,6 +331,19 @@ code {
   justify-content: flex-end;
 }
 
+.hero-demo-note {
+  margin: 1rem 0 0;
+  max-width: 36rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--dim);
+}
+
+.hero-demo-note strong {
+  color: var(--mute);
+  font-weight: 500;
+}
+
 .hero-index {
   position: absolute;
   right: max(1rem, calc((100vw - var(--shell)) / 2 - 1rem));
