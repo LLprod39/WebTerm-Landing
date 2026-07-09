@@ -125,7 +125,11 @@
       <div class="shell">
         <div class="block-head">
           <p class="kicker"><span>// 01</span> карта продукта</p>
-          <h2>Восемь модулей — один workspace</h2>
+          <h2>Как это выглядит в работе</h2>
+          <p class="sub" style="margin-top:0.75rem;color:var(--mute);font-size:0.9rem;max-width:36rem">
+            Не скриншоты «на потом» — живые UI-сцены в логике WebTerm: сайдбар, статусы, Nova, шаги агента.
+            Переключай модули слева.
+          </p>
         </div>
 
         <div class="explorer">
@@ -178,15 +182,32 @@
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>servers · inventory</span></div>
-                  <div class="vw-body inventory">
-                    <div class="inv-head"><span>HOST</span><span>ADDR</span><span>STATE</span><span></span></div>
-                    <div class="inv-row"><b>prod-api-01</b><code>10.0.12.4</code><em class="g">online</em><span>ssh</span></div>
-                    <div class="inv-row"><b>db-primary</b><code>10.0.12.18</code><em class="g">online</em><span>ssh</span></div>
-                    <div class="inv-row dim"><b>worker-03</b><code>10.0.12.41</code><em class="y">warn</em><span>disk</span></div>
-                    <div class="inv-row"><b>edge-gw</b><code>10.0.1.2</code><em class="g">online</em><span>ssh</span></div>
-                    <div class="inv-foot">24 hosts · 3 groups · 2 alerts open</div>
+                <div class="demo" data-demo="servers">
+                  <div class="demo-app">
+                    <aside class="demo-nav">
+                      <div class="demo-logo"><span>W</span> WebTerm</div>
+                      <div class="dn">Панель</div>
+                      <div class="dn on">Серверы</div>
+                      <div class="dn">Агенты</div>
+                      <div class="dn">Студия</div>
+                      <div class="dn">Кубернетес</div>
+                      <div class="dn muted">Настройки</div>
+                    </aside>
+                    <div class="demo-main">
+                      <div class="demo-top">
+                        <span class="dt-title">Инфраструктура</span>
+                        <span class="pill ok">18 online</span>
+                        <span class="pill warn">1 warn</span>
+                      </div>
+                      <div class="srv-table">
+                        <div class="srv-h"><span></span><span>HOST</span><span>ADDR</span><span>HEALTH</span><span></span></div>
+                        <div class="srv-r a1"><i class="dot ok"></i><b>prod-api-01</b><code>10.0.12.4</code><em class="ok">Норма</em><span class="chip">SSH</span></div>
+                        <div class="srv-r a2"><i class="dot ok"></i><b>db-primary</b><code>10.0.12.18</code><em class="ok">Норма</em><span class="chip">SSH</span></div>
+                        <div class="srv-r a3 flash"><i class="dot warn"></i><b>worker-03</b><code>10.0.12.41</code><em class="warn">Внимание</em><span class="chip">disk</span></div>
+                        <div class="srv-r a4"><i class="dot ok"></i><b>edge-gw</b><code>10.0.1.2</code><em class="ok">Норма</em><span class="chip">SSH</span></div>
+                      </div>
+                      <div class="demo-toast">Алерт · worker-03 disk 86%</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -195,32 +216,37 @@
             <!-- TERMINAL -->
             <article class="panel" id="panel-terminal" data-panel="terminal" hidden>
               <div class="panel-copy">
-                <h3>SSH-терминал в браузере</h3>
-                <p>Полноценный терминал с вкладками, SFTP-менеджер, обзор системы, графический редактор файлов, темы. Рядом — AI-панель Nova: видит контекст сессии и работает в рамках sudo-политик.</p>
+                <h3>SSH-терминал + Nova</h3>
+                <p>Полноценный терминал с вкладками, SFTP, обзор системы, GUI-редактор. Рядом AI-панель Nova: контекст сессии (cwd, shell, recent cmds) и sudo-лимиты.</p>
                 <ul>
-                  <li>Django Channels + xterm.js</li>
+                  <li>xterm.js + Channels</li>
                   <li>SFTP / transfer queue</li>
-                  <li>AI Nova · session context</li>
+                  <li>Nova · session context</li>
                   <li>guarded commands</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window crt">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>terminal · prod-api-01 · tab 2</span></div>
-                  <div class="vw-body term">
-                    <div class="term-cols">
-                      <div class="term-main">
-                        <div><span class="u">ops@prod</span>:<span class="p">~/app</span>$ systemctl status nginx -l --no-pager</div>
-                        <div class="muted">● nginx.service - A high performance web server</div>
-                        <div class="ok">   Active: active (running)</div>
-                        <div><span class="u">ops@prod</span>:<span class="p">~/app</span>$ tail -f /var/log/nginx/error.log</div>
-                        <div class="muted">… connect() failed (111)</div>
-                        <div><span class="u">ops@prod</span>:<span class="p">~/app</span>$ <span class="blink">▌</span></div>
+                <div class="demo" data-demo="terminal">
+                  <div class="demo-app wide">
+                    <div class="term-tabs">
+                      <span class="tt">prod-api-01</span>
+                      <span class="tt on">worker-03</span>
+                      <span class="tt dim">+ tab</span>
+                      <span class="tt-right">Files · AI</span>
+                    </div>
+                    <div class="term-split">
+                      <div class="term-pane">
+                        <div class="term-out" id="demo-term-out"></div>
+                        <div class="term-in"><span class="u">ops@worker-03</span>:<span class="p">~</span>$ <span class="caret"></span></div>
                       </div>
-                      <div class="term-ai">
-                        <div class="ai-h">NOVA</div>
-                        <div class="ai-b">Upstream down на :3001. Проверь process + reload после фикса.</div>
-                        <div class="ai-f">sudo: limited · cwd shared</div>
+                      <div class="nova-pane">
+                        <div class="nova-h">NOVA <span>AI</span></div>
+                        <div class="nova-ctx">cwd /var · shell bash · sudo limited</div>
+                        <div class="nova-msg" id="demo-nova-msg"></div>
+                        <div class="nova-actions">
+                          <span class="na">Предложить fix</span>
+                          <span class="na dim">Run (guarded)</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -231,27 +257,32 @@
             <!-- STUDIO -->
             <article class="panel" id="panel-studio" data-panel="studio" hidden>
               <div class="panel-copy">
-                <h3>Studio — визуальные пайплайны</h3>
-                <p>Автоматизация в виде графа: триггер → шаги → согласование → уведомление. Запуск по расписанию или webhook, MCP-инструменты, skills, черновики на ревью, история запусков.</p>
+                <h3>Studio — пайплайны</h3>
+                <p>Граф: trigger → SSH → condition → notify. Cron/webhook, MCP, skills, approvals, история runs.</p>
                 <ul>
                   <li>pipeline editor</li>
-                  <li>MCP registry / hub</li>
-                  <li>skills authoring</li>
+                  <li>MCP hub</li>
+                  <li>skills</li>
                   <li>Telegram / email</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>studio · disk-watch</span></div>
-                  <div class="vw-body flow">
-                    <div class="node"><small>TRIGGER</small>cron 0 */6</div>
-                    <div class="wire"></div>
-                    <div class="node"><small>SSH</small>df -h workers</div>
-                    <div class="wire"></div>
-                    <div class="node"><small>IF</small>use% &gt; 80</div>
-                    <div class="wire"></div>
-                    <div class="node accent-n"><small>NOTIFY</small>telegram ops</div>
-                    <div class="flow-meta">last run ok · 42s · mcp:3 · skills:2</div>
+                <div class="demo" data-demo="studio">
+                  <div class="demo-app">
+                    <div class="demo-top">
+                      <span class="dt-title">studio · disk-watch</span>
+                      <span class="pill run" id="demo-studio-status">running</span>
+                    </div>
+                    <div class="flow-canvas">
+                      <div class="fn n1"><small>trigger</small>Cron 0 */6</div>
+                      <div class="fw w1"></div>
+                      <div class="fn n2"><small>ssh</small>df -h workers</div>
+                      <div class="fw w2"></div>
+                      <div class="fn n3"><small>if</small>use% &gt; 80</div>
+                      <div class="fw w3"></div>
+                      <div class="fn n4"><small>notify</small>Telegram ops</div>
+                    </div>
+                    <div class="flow-log" id="demo-studio-log"></div>
                   </div>
                 </div>
               </div>
@@ -260,25 +291,29 @@
             <!-- AGENTS -->
             <article class="panel" id="panel-agents" data-panel="agents" hidden>
               <div class="panel-copy">
-                <h3>AI-агенты с полным логом</h3>
-                <p>Конфигурации, запуски, пошаговые события в реальном времени, отчёты. LLM-провайдер настраивается в панели. Каждое действие агента фиксируется в audit-логе.</p>
+                <h3>Агенты — отчёт, а не чёрный ящик</h3>
+                <p>Как в продукте: статус, one-liner, шаги, потом логи. Audit on. Провайдер LLM в настройках.</p>
                 <ul>
-                  <li>agent configs / profiles</li>
-                  <li>run timeline + artifacts</li>
-                  <li>chat-оркестратор</li>
-                  <li>providers & limits</li>
+                  <li>Итог · Ход · Материалы</li>
+                  <li>live progress</li>
+                  <li>HITL / waiting</li>
+                  <li>artifacts</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>agents · run #284</span></div>
-                  <div class="vw-body agentlog">
-                    <div><time>12:01</time> plan · check nginx + disk on worker pool</div>
-                    <div><time>12:01</time> tool · list_servers → 4</div>
-                    <div><time>12:02</time> tool · run_command worker-01 «df -h»</div>
-                    <div class="ok"><time>12:02</time> result · / 58% used</div>
-                    <div><time>12:03</time> report draft · awaiting review</div>
-                    <div class="agent-stat">status running · audit on · model configured</div>
+                <div class="demo" data-demo="agents">
+                  <div class="demo-app">
+                    <div class="ar-head">
+                      <div>
+                        <div class="ar-title">Patch Rollout <span class="pill run" id="demo-agent-badge">Выполняется</span></div>
+                        <div class="ar-sub" id="demo-agent-sub">plan · check nginx + disk…</div>
+                      </div>
+                      <div class="ar-tabs">
+                        <span class="on">Итог</span><span>Ход</span><span>Материалы</span>
+                      </div>
+                    </div>
+                    <div class="ar-progress"><i id="demo-agent-bar"></i></div>
+                    <div class="ar-log" id="demo-agent-log"></div>
                   </div>
                 </div>
               </div>
@@ -287,28 +322,33 @@
             <!-- K8S -->
             <article class="panel" id="panel-k8s" data-panel="k8s" hidden>
               <div class="panel-copy">
-                <h3>Kubernetes в том же workspace</h3>
-                <p>Кластеры, поды, логи, сеть, административные действия — в том же интерфейсе, где серверы и SSH. Fleet и Devtron подключаются отдельно, по readiness-гейтам.</p>
+                <h3>Kubernetes рядом с VM</h3>
+                <p>Кластеры, pods, logs, admin workspace. Fleet/Devtron — по readiness, не «всегда в сайдбаре».</p>
                 <ul>
-                  <li>inventory / pods / logs</li>
+                  <li>pods / logs</li>
                   <li>admin actions</li>
-                  <li>Fleet · Devtron surfaces</li>
-                  <li>sidebar readiness gates</li>
+                  <li>Fleet · Devtron</li>
+                  <li>readiness gates</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>kubernetes · prod-cluster</span></div>
-                  <div class="vw-body k8s">
-                    <div class="kpis">
-                      <div><span>ns</span><strong>14</strong></div>
-                      <div><span>pods</span><strong>128</strong></div>
-                      <div><span>alerts</span><strong class="y">2</strong></div>
+                <div class="demo" data-demo="k8s">
+                  <div class="demo-app">
+                    <div class="demo-top">
+                      <span class="dt-title">kubernetes · prod</span>
+                      <span class="pill ok">ready</span>
                     </div>
-                    <div class="pod"><i class="g"></i> api-7f9c… Running 2/2</div>
-                    <div class="pod"><i class="g"></i> worker-5d2… Running 1/1</div>
-                    <div class="pod"><i class="y"></i> job-cleanup CrashLoop</div>
-                    <div class="pod muted"><i></i> redis-0 Running 1/1</div>
+                    <div class="k8s-stats">
+                      <div><span>ns</span><strong data-count="14">0</strong></div>
+                      <div><span>pods</span><strong data-count="128">0</strong></div>
+                      <div><span>alerts</span><strong class="warn-c" data-count="2">0</strong></div>
+                    </div>
+                    <div class="k8s-pods">
+                      <div class="kp a1"><i class="dot ok"></i> api-7f9c… <em>Running 2/2</em></div>
+                      <div class="kp a2"><i class="dot ok"></i> worker-5d2… <em>Running 1/1</em></div>
+                      <div class="kp a3 bad"><i class="dot warn"></i> job-cleanup <em>CrashLoop</em></div>
+                      <div class="kp a4"><i class="dot ok"></i> redis-0 <em>Running 1/1</em></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -317,23 +357,25 @@
             <!-- MARS -->
             <article class="panel" id="panel-mars" data-panel="mars" hidden>
               <div class="panel-copy">
-                <h3>MARS — guided AI workflow</h3>
-                <p>Пошаговый AI-процесс: интервью → план → выполнение → ревью в персональном workspace. Для задач, где нужен управляемый прогон с историей, а не разовый чат.</p>
+                <h3>MARS — guided flow</h3>
+                <p>Interview → plan → execute → review в personal workspace. Не разовый chat — ведомый прогон.</p>
                 <ul>
-                  <li>guided multi-step flow</li>
-                  <li>personal workspaces</li>
-                  <li>run pages / phases</li>
+                  <li>guided steps</li>
+                  <li>workspaces</li>
+                  <li>run history</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>mars · guided run</span></div>
-                  <div class="vw-body mars">
-                    <div class="step on"><span>1</span> interview</div>
-                    <div class="step on"><span>2</span> plan</div>
-                    <div class="step active"><span>3</span> execute</div>
-                    <div class="step"><span>4</span> review</div>
-                    <div class="mars-note">workspace user_22 · worker phase: tools</div>
+                <div class="demo" data-demo="mars">
+                  <div class="demo-app">
+                    <div class="demo-top"><span class="dt-title">mars · run</span><span class="pill run" id="demo-mars-phase">execute</span></div>
+                    <div class="mars-steps">
+                      <div class="ms" data-s="1"><span>1</span> interview</div>
+                      <div class="ms" data-s="2"><span>2</span> plan</div>
+                      <div class="ms" data-s="3"><span>3</span> execute</div>
+                      <div class="ms" data-s="4"><span>4</span> review</div>
+                    </div>
+                    <div class="mars-note" id="demo-mars-note">workspace user_22 · waiting…</div>
                   </div>
                 </div>
               </div>
@@ -342,23 +384,27 @@
             <!-- ACCESS -->
             <article class="panel" id="panel-access" data-panel="access" hidden>
               <div class="panel-copy">
-                <h3>Доступы, секреты, audit</h3>
-                <p>Пользователи, группы, feature gates, права, сессии. Локальный логин или SSO через Keycloak. Журнал действий и активность пользователей — в том же интерфейсе.</p>
+                <h3>Доступы и audit</h3>
+                <p>Users, groups, feature gates, SSO/Keycloak. Права явные — не «где-то в .env».</p>
                 <ul>
-                  <li>RBAC + feature gates</li>
-                  <li>SSO / Keycloak optional</li>
-                  <li>audit / activity</li>
-                  <li>secrets & runtime limits</li>
+                  <li>RBAC / feature gates</li>
+                  <li>SSO optional</li>
+                  <li>audit log</li>
+                  <li>sessions</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>settings · access</span></div>
-                  <div class="vw-body access">
-                    <div class="acc-row"><b>admin</b><span>staff</span><span class="g">sessions 2</span></div>
-                    <div class="acc-row"><b>ops-team</b><span>group</span><span>servers · terminal · studio</span></div>
-                    <div class="acc-row"><b>k8s-ro</b><span>group</span><span>kubernetes read</span></div>
-                    <div class="acc-row dim"><b>sso</b><span>keycloak</span><span>optional</span></div>
+                <div class="demo" data-demo="access">
+                  <div class="demo-app">
+                    <div class="demo-top"><span class="dt-title">settings · permissions</span></div>
+                    <div class="gate-list">
+                      <div class="gate a1"><b>servers</b><span class="on">on</span></div>
+                      <div class="gate a2"><b>studio</b><span class="on">on</span></div>
+                      <div class="gate a3"><b>agents</b><span class="on">on</span></div>
+                      <div class="gate a4"><b>kubernetes</b><span class="off">gate</span></div>
+                      <div class="gate a5"><b>mars</b><span class="on">on</span></div>
+                    </div>
+                    <div class="audit-line" id="demo-audit">audit · —</div>
                   </div>
                 </div>
               </div>
@@ -367,22 +413,28 @@
             <!-- PLUGINS -->
             <article class="panel" id="panel-plugins" data-panel="plugins" hidden>
               <div class="panel-copy">
-                <h3>Плагины и приватный каталог</h3>
-                <p>Пакеты <code>.wtp</code>: страницы, виджеты дашборда, ноды Studio, инструменты, хуки. Устанавливаются из приватного каталога вашей команды — публичный маркетплейс не нужен.</p>
+                <h3>Плагины .wtp</h3>
+                <p>Приватный каталог: страницы, widgets, studio nodes. Без публичного marketplace.</p>
                 <ul>
                   <li>.wtp packages</li>
                   <li>private catalog</li>
-                  <li>studio nodes / widgets</li>
+                  <li>dashboard widgets</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
-                <div class="viz-window">
-                  <div class="vw-bar"><i></i><i></i><i></i><span>plugins · catalog</span></div>
-                  <div class="vw-body plugs">
-                    <div class="plug"><b>ops-board.wtp</b><span>dashboard widgets</span></div>
-                    <div class="plug"><b>notify-extra.wtp</b><span>studio node</span></div>
-                    <div class="plug"><b>cmdb-bridge.wtp</b><span>connector</span></div>
-                    <div class="plug muted"><b>+ install package</b><span>local upload</span></div>
+                <div class="demo" data-demo="plugins">
+                  <div class="demo-app">
+                    <div class="demo-top"><span class="dt-title">plugins · install</span></div>
+                    <div class="plug-card">
+                      <b>ops-board.wtp</b>
+                      <span>dashboard widgets</span>
+                      <div class="plug-bar"><i id="demo-plug-bar"></i></div>
+                      <em id="demo-plug-st">waiting…</em>
+                    </div>
+                    <div class="plug-list">
+                      <div class="pl done">notify-extra.wtp · installed</div>
+                      <div class="pl done">cmdb-bridge.wtp · installed</div>
+                    </div>
                   </div>
                 </div>
               </div>
