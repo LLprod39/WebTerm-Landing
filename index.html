@@ -60,8 +60,8 @@
 
         <h1 class="hero-title">
           <span class="t-line">Одна консоль.</span>
-          <span class="t-line">Серверы. SSH.</span>
-          <span class="t-line accent">AI. Kubernetes.</span>
+          <span class="t-line">Серверы, SSH.</span>
+          <span class="t-line accent">AI, Kubernetes.</span>
         </h1>
 
         <div class="hero-bottom">
@@ -77,8 +77,8 @@
             <a class="btn-ghost lg" href="#map">Что внутри →</a>
           </div>
           <p class="hero-demo-note">
-            Демо — <strong>реальный frontend</strong> WebTerm (demo mode), без своего сервера.
-            Логин: любой логин/пароль. Не полный прод: SSH/WS к вашим хостам недоступны.
+            Демо — это <strong>реальный frontend</strong> WebTerm в demo-режиме, без подключения к серверу.
+            Логин: любой логин и пароль. Это не полноценный прод: SSH и WS к вашим хостам недоступны.
           </p>
         </div>
       </div>
@@ -135,7 +135,7 @@
           <p class="kicker"><span>// 01</span> карта продукта</p>
           <h2>Как это выглядит в работе</h2>
           <p class="sub" style="margin-top:0.75rem;color:var(--mute);font-size:0.9rem;max-width:36rem">
-            Не скриншоты «на потом» — живые UI-сцены в логике WebTerm: сайдбар, статусы, Nova, шаги агента.
+            Не статичные скриншоты — живые UI-сцены в логике WebTerm: сайдбар, статусы, Nova, шаги агента.
             Переключай модули слева.
           </p>
         </div>
@@ -185,7 +185,7 @@
                 <ul>
                   <li>группы по командам / env</li>
                   <li>мониторинг и алерты</li>
-                  <li>server memory / контекст</li>
+                  <li>память и контекст по серверу</li>
                   <li>массовые действия</li>
                 </ul>
               </div>
@@ -225,12 +225,12 @@
             <article class="panel" id="panel-terminal" data-panel="terminal" hidden>
               <div class="panel-copy">
                 <h3>SSH-терминал + Nova</h3>
-                <p>Полноценный терминал с вкладками, SFTP, обзор системы, GUI-редактор. Рядом AI-панель Nova: контекст сессии (cwd, shell, recent cmds) и sudo-лимиты.</p>
+                <p>Полноценный терминал с вкладками, SFTP, обзор системы, GUI-редактор. Рядом AI-панель Nova: контекст сессии (cwd, shell, недавние команды) и лимиты sudo.</p>
                 <ul>
                   <li>xterm.js + Channels</li>
-                  <li>SFTP / transfer queue</li>
-                  <li>Nova · session context</li>
-                  <li>guarded commands</li>
+                  <li>SFTP и очередь передач</li>
+                  <li>Nova · контекст сессии</li>
+                  <li>команды под контролем</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
@@ -266,10 +266,10 @@
             <article class="panel" id="panel-studio" data-panel="studio" hidden>
               <div class="panel-copy">
                 <h3>Studio — пайплайны</h3>
-                <p>Граф: trigger → SSH → condition → notify. Cron/webhook, MCP, skills, approvals, история runs.</p>
+                <p>Граф автоматизации: триггер → SSH → условие → уведомление. Cron или webhook, MCP, skills, подтверждения, история запусков.</p>
                 <ul>
-                  <li>pipeline editor</li>
-                  <li>MCP hub</li>
+                  <li>редактор пайплайнов</li>
+                  <li>MCP-хаб</li>
                   <li>skills</li>
                   <li>Telegram / email</li>
                 </ul>
@@ -300,12 +300,12 @@
             <article class="panel" id="panel-agents" data-panel="agents" hidden>
               <div class="panel-copy">
                 <h3>Агенты — отчёт, а не чёрный ящик</h3>
-                <p>Как в продукте: статус, one-liner, шаги, потом логи. Audit on. Провайдер LLM в настройках.</p>
+                <p>Как в самом продукте: статус, короткое резюме, шаги выполнения и логи при необходимости. Аудит включён по умолчанию, провайдер LLM настраивается отдельно.</p>
                 <ul>
                   <li>Итог · Ход · Материалы</li>
-                  <li>live progress</li>
-                  <li>HITL / waiting</li>
-                  <li>artifacts</li>
+                  <li>прогресс в реальном времени</li>
+                  <li>HITL / ожидание решения</li>
+                  <li>артефакты</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
@@ -331,12 +331,12 @@
             <article class="panel" id="panel-k8s" data-panel="k8s" hidden>
               <div class="panel-copy">
                 <h3>Kubernetes рядом с VM</h3>
-                <p>Кластеры, pods, logs, admin workspace. Fleet/Devtron — по readiness, не «всегда в сайдбаре».</p>
+                <p>Кластеры, поды, логи, отдельное рабочее пространство администратора. Fleet и Devtron подключаются по готовности, а не висят в сайдбаре постоянно.</p>
                 <ul>
-                  <li>pods / logs</li>
-                  <li>admin actions</li>
+                  <li>поды / логи</li>
+                  <li>административные действия</li>
                   <li>Fleet · Devtron</li>
-                  <li>readiness gates</li>
+                  <li>гейты готовности</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
@@ -365,12 +365,12 @@
             <!-- MARS -->
             <article class="panel" id="panel-mars" data-panel="mars" hidden>
               <div class="panel-copy">
-                <h3>MARS — guided flow</h3>
-                <p>Interview → plan → execute → review в personal workspace. Не разовый chat — ведомый прогон.</p>
+                <h3>MARS — управляемый прогон</h3>
+                <p>Интервью → план → выполнение → проверка — в личном рабочем пространстве. Не разовый чат, а управляемый прогон задачи.</p>
                 <ul>
-                  <li>guided steps</li>
-                  <li>workspaces</li>
-                  <li>run history</li>
+                  <li>пошаговый сценарий</li>
+                  <li>рабочие пространства</li>
+                  <li>история прогонов</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
@@ -392,13 +392,13 @@
             <!-- ACCESS -->
             <article class="panel" id="panel-access" data-panel="access" hidden>
               <div class="panel-copy">
-                <h3>Доступы и audit</h3>
-                <p>Users, groups, feature gates, SSO/Keycloak. Права явные — не «где-то в .env».</p>
+                <h3>Доступы и аудит</h3>
+                <p>Пользователи, группы, feature-флаги, SSO/Keycloak. Права видны в интерфейсе — не спрятаны в .env.</p>
                 <ul>
-                  <li>RBAC / feature gates</li>
-                  <li>SSO optional</li>
-                  <li>audit log</li>
-                  <li>sessions</li>
+                  <li>RBAC / feature-флаги</li>
+                  <li>SSO опционально</li>
+                  <li>журнал аудита</li>
+                  <li>сессии</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
@@ -422,11 +422,11 @@
             <article class="panel" id="panel-plugins" data-panel="plugins" hidden>
               <div class="panel-copy">
                 <h3>Плагины .wtp</h3>
-                <p>Приватный каталог: страницы, widgets, studio nodes. Без публичного marketplace.</p>
+                <p>Приватный каталог: страницы, виджеты, узлы для Studio. Без публичного маркетплейса.</p>
                 <ul>
-                  <li>.wtp packages</li>
-                  <li>private catalog</li>
-                  <li>dashboard widgets</li>
+                  <li>.wtp пакеты</li>
+                  <li>приватный каталог</li>
+                  <li>виджеты дашборда</li>
                 </ul>
               </div>
               <div class="panel-viz" aria-hidden="true">
@@ -474,12 +474,12 @@
           <div class="spec-row">
             <div class="spec-id">C</div>
             <div class="spec-title">Мониторинг</div>
-            <div class="spec-body">Health-чеки, алерты, черновики watcher'ов, операционная история по серверам — встроено рядом с инвентарём.</div>
+            <div class="spec-body">Health-чеки, алерты, черновики вотчеров, операционная история по серверам — встроено рядом с инвентарём.</div>
           </div>
           <div class="spec-row">
             <div class="spec-id">D</div>
             <div class="spec-title">Безопасность runtime</div>
-            <div class="spec-body">Execution policy, sandbox-правила, маскирование чувствительных данных, review-гейты, runtime-лимиты. AI по умолчанию работает с ограниченными правами, а не с root-доступом.</div>
+            <div class="spec-body">Политики выполнения, правила sandbox, маскирование чувствительных данных, review-гейты, лимиты runtime. AI по умолчанию работает с ограниченными правами, а не с root-доступом.</div>
           </div>
           <div class="spec-row">
             <div class="spec-id">E</div>
