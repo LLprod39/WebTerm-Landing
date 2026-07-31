@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="WebTerm — self-hosted панель для небольших DevOps-команд: инвентарь серверов, SSH-терминал, файлы, мониторинг и журнал действий." />
   <meta name="theme-color" content="#111113" />
-  <title>WebTerm — self-hosted панель для серверов и SSH</title>
+  <title>WebTerm — self-hosted панель для серверов</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,14 +25,13 @@
       <nav class="top-nav" id="primary-nav">
         <a href="#workflow">Как работает</a>
         <a href="#map">Функции</a>
+        <a href="#ai-memory">Память ИИ</a>
         <a href="#data">Данные</a>
         <a href="#depth">Границы</a>
+        <a href="#roadmap">Планы</a>
         <a href="#install">Установка</a>
       </nav>
       <div class="top-right">
-        <a class="link-quiet" href="https://llprod39.github.io/WebTerm-Demo/?v=4" target="_blank" rel="noopener noreferrer">
-          UI-демо
-        </a>
         <a class="link-quiet" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">
           <span class="gh-dot"></span> GitHub
         </a>
@@ -66,13 +65,9 @@
             В браузере доступны инвентарь серверов, SSH-терминал, файлы, мониторинг и журнал действий.
           </p>
           <div class="hero-actions">
-            <a class="btn-hard lg" href="https://llprod39.github.io/WebTerm-Demo/?v=4" target="_blank" rel="noopener noreferrer">Открыть демо</a>
+            <a class="btn-hard lg" href="#map">Посмотреть возможности</a>
             <a class="btn-ghost lg" href="#install">Установить</a>
           </div>
-          <p class="hero-demo-note">
-            Демо работает без подключения к вашим серверам. Для проверки SSH, файлов и мониторинга
-            установите WebTerm на отдельный Linux-хост.
-          </p>
         </div>
       </div>
 
@@ -331,58 +326,493 @@
       </div>
     </section>
 
+    <!-- AI MEMORY -->
+    <section class="block ai-memory-block" id="ai-memory">
+      <div class="shell">
+        <div class="block-head">
+          <p class="kicker"><span>// 03</span> память ИИ</p>
+          <h2>ИИ помнит контекст каждого сервера</h2>
+          <p class="sub">Не как бесконечную переписку. WebTerm собирает проверяемые факты о сервере и передаёт нужную часть этой памяти в следующую задачу.</p>
+        </div>
+
+        <div class="ai-memory-flow" aria-label="Как формируется и используется память сервера">
+          <article class="ai-memory-node">
+            <span>01 · события</span>
+            <strong>Команды и ошибки</strong>
+            <p>Результаты команд, алерты, изменения и заметки оператора.</p>
+          </article>
+          <div class="ai-memory-arrow" aria-hidden="true">→</div>
+          <article class="ai-memory-node">
+            <span>02 · обработка</span>
+            <strong>Память сервера</strong>
+            <p>Доступ, риски, последние изменения и рабочие шаги решения.</p>
+          </article>
+          <div class="ai-memory-arrow" aria-hidden="true">→</div>
+          <article class="ai-memory-node">
+            <span>03 · новый запрос</span>
+            <strong>Нужный контекст</strong>
+            <p>ИИ видит, что уже происходило именно на выбранном сервере.</p>
+          </article>
+          <div class="ai-memory-arrow" aria-hidden="true">→</div>
+          <article class="ai-memory-node">
+            <span>04 · повторение</span>
+            <strong>Кандидат в автоматизацию</strong>
+            <p>Повторяемая успешная последовательность становится черновиком.</p>
+          </article>
+        </div>
+
+        <div class="ai-memory-actions">
+          <article>
+            <span class="ai-memory-label auto-label">Автоматически</span>
+            <h3>Замечает и подготавливает</h3>
+            <ul>
+              <li>сжимает историю в полезные факты, если включён worker памяти;</li>
+              <li>при включённом «Дежурном» сообщает о критическом алерте и помогает начать разбор;</li>
+              <li>ищет повторяемые безопасные действия и готовит черновик Skill или план Playbook.</li>
+            </ul>
+          </article>
+          <div class="ai-memory-gate" aria-hidden="true"><span>проверка</span><b>→</b></div>
+          <article>
+            <span class="ai-memory-label confirm-label">После подтверждения</span>
+            <h3>Превращается в рабочий процесс</h3>
+            <ul>
+              <li>оператор проверяет команды, условия успеха и откат;</li>
+              <li>черновик сохраняется как Skill или оформляется в Playbook;</li>
+              <li>изменяющий запуск проходит правила доступа и явное подтверждение.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="ai-memory-limit"><strong>Главное:</strong> одна ошибка сама по себе не становится автоматизацией. Нужны повторяемость, успешные измеренные запуски и безопасная проверка результата. WebTerm может предложить действие, но не должен молча менять сервер.</p>
+      </div>
+    </section>
+
     <!-- DATA FLOW -->
     <section class="block band data-block" id="data">
       <div class="shell">
+        <div class="block-head data-head trust-data-head">
+          <p class="kicker"><span>// 04</span> данные</p>
+          <h2>Данные и защита</h2>
+          <p class="sub">Что передаётся, где хранится и какие проверки выполняет WebTerm.</p>
+        </div>
+
+        <div class="plain-flow-map">
+          <section class="plain-flow-group">
+            <h3>Основной маршрут</h3>
+            <div class="plain-flow-row main-data-row">
+              <article class="plain-flow-box">
+                <strong>Браузер</strong>
+                <p>Логин при входе, команды, файлы и запросы.</p>
+              </article>
+              <div class="plain-flow-arrow"><span>HTTPS / WSS</span><b>→</b></div>
+              <article class="plain-flow-box">
+                <strong>WebTerm</strong>
+                <p>Проверяет пользователя, проект и доступ к серверу.</p>
+              </article>
+              <div class="plain-flow-arrow"><span>SSH / SFTP</span><b>→</b></div>
+              <article class="plain-flow-box">
+                <strong>Ваш сервер</strong>
+                <p>Выполняет команды. Файлы остаются на сервере.</p>
+              </article>
+            </div>
+            <div class="plain-storage-row">
+              <span>WebTerm</span><b>→</b>
+              <span>PostgreSQL: пользователи, серверы, история, аудит</span><b>·</b>
+              <span>Redis: каналы, кэш, очереди</span>
+            </div>
+          </section>
+
+          <section class="plain-flow-group">
+            <h3>Как защищается доступ</h3>
+            <div class="plain-flow-row protection-row">
+              <article class="plain-flow-box compact-box"><strong>Шифрование канала</strong><p>HTTPS/WSS и SSH/SFTP.</p></article>
+              <div class="plain-flow-arrow only-arrow"><b>→</b></div>
+              <article class="plain-flow-box compact-box"><strong>Проверка прав</strong><p>Сессия, проект и выбранный сервер.</p></article>
+              <div class="plain-flow-arrow only-arrow"><b>→</b></div>
+              <article class="plain-flow-box compact-box"><strong>Проверка сервера</strong><p>Подтверждается SSH host key.</p></article>
+              <div class="plain-flow-arrow only-arrow"><b>→</b></div>
+              <article class="plain-flow-box compact-box"><strong>Секреты и аудит</strong><p>Пароли и ключи шифруются. Действия записываются.</p></article>
+            </div>
+          </section>
+
+          <section class="plain-flow-group model-flow-group">
+            <h3>Если используется модель</h3>
+            <div class="plain-flow-row model-data-row">
+              <article class="plain-flow-box compact-box"><strong>Вопрос и контекст</strong><p>Текущая задача, выбранные данные и краткая память этого сервера.</p></article>
+              <div class="plain-flow-arrow only-arrow"><b>→</b></div>
+              <article class="plain-flow-box compact-box"><strong>Фильтр секретов</strong><p>Маскирует известные форматы паролей, ключей и токенов.</p></article>
+              <div class="plain-flow-arrow only-arrow"><b>→</b></div>
+              <article class="plain-flow-box compact-box"><strong>Локальная модель</strong><p>Запрос остаётся внутри вашей инфраструктуры.</p></article>
+            </div>
+
+            <div class="plain-model-notes">
+              <p><strong>Модель видит:</strong> вопрос, выбранные команды, часть вывода и полезные факты из памяти текущего сервера.</p>
+              <p><strong>Не передаётся автоматически:</strong> SSH/sudo-пароли, приватные ключи, все файлы и другие проекты.</p>
+              <p><strong>Облачная модель:</strong> выбранный контекст уходит провайдеру по HTTPS только после отдельной настройки.</p>
+            </div>
+          </section>
+        </div>
+
+        <div class="simple-data-map" hidden aria-hidden="true">
+          <div class="simple-main-route" aria-label="Основной маршрут данных">
+            <article class="simple-node">
+              <span>01</span>
+              <strong>Браузер</strong>
+              <small>Команды, файлы, запросы</small>
+            </article>
+
+            <div class="simple-arrow">
+              <b>HTTPS / WSS</b>
+              <i aria-hidden="true"></i>
+              <small>зашифрованный канал</small>
+            </div>
+
+            <article class="simple-node primary-node">
+              <span>02</span>
+              <strong>WebTerm</strong>
+              <small>Проверяет пользователя и доступ</small>
+            </article>
+
+            <div class="simple-arrow server-arrow">
+              <b>SSH / SFTP</b>
+              <i aria-hidden="true"></i>
+              <small>защищённое подключение</small>
+            </div>
+
+            <article class="simple-node server-node">
+              <span>03</span>
+              <strong>Ваш сервер</strong>
+              <small>Команды выполняются, файлы остаются здесь</small>
+            </article>
+          </div>
+
+          <div class="simple-branches">
+            <div class="simple-branch storage-branch">
+              <span class="branch-label">Хранение</span>
+              <div class="branch-route"><b>WebTerm</b><i>→</i><b>PostgreSQL / Redis</b></div>
+              <p>Пользователи, серверы, история и аудит хранятся на вашем хосте. Секретные значения шифруются отдельным ключом.</p>
+            </div>
+
+            <div class="simple-branch model-branch">
+              <span class="branch-label">Если подключена модель</span>
+              <div class="branch-route"><b>Выбранный контекст</b><i>→</i><b>Фильтр секретов</b><i>→</i><b>Локальная модель</b></div>
+              <p>Модель получает вопрос и добавленный контекст. Пароли, приватные ключи, все файлы и другие проекты автоматически не передаются.</p>
+            </div>
+          </div>
+
+          <div class="simple-cloud-note">
+            <span>Облачная модель — отдельно</span>
+            <p>Только после настройки провайдера выбранный контекст отправляется ему по HTTPS.</p>
+          </div>
+
+          <div class="simple-checks">
+            <span>Проверка прав</span>
+            <span>Проверка SSH host key</span>
+            <span>Шифрование секретов</span>
+          </div>
+        </div>
+
+        <div class="trust-map" hidden aria-hidden="true">
+          <div class="trust-main-flow">
+            <article class="trust-node browser-node">
+              <span class="trust-node-no">01</span>
+              <div class="trust-icon" aria-hidden="true">▣</div>
+              <div>
+                <strong>Браузер пользователя</strong>
+                <small>Команды, файлы и запросы</small>
+              </div>
+            </article>
+
+            <div class="trust-connector secure-connector" aria-label="Защищённое соединение">
+              <span>HTTPS / WSS</span>
+              <i aria-hidden="true"></i>
+              <small>шифрование в пути</small>
+            </div>
+
+            <div class="private-zone">
+              <div class="private-zone-head">
+                <span>Ваша инфраструктура</span>
+                <b>self-hosted</b>
+              </div>
+
+              <article class="webterm-node">
+                <div class="shield-mark" aria-hidden="true">◆</div>
+                <div>
+                  <strong>WebTerm</strong>
+                  <small>Проверяет пользователя и выбранный сервер</small>
+                </div>
+              </article>
+
+              <div class="protection-strip" aria-label="Механизмы защиты">
+                <span><b>01</b> сессия и права проекта</span>
+                <span><b>02</b> trusted SSH host key</span>
+                <span><b>03</b> зашифрованные секреты</span>
+              </div>
+
+              <div class="private-targets">
+                <article>
+                  <span class="target-protocol">PostgreSQL · Redis</span>
+                  <strong>Данные WebTerm</strong>
+                  <small>Пользователи, серверы, история и аудит остаются на вашем хосте.</small>
+                </article>
+                <div class="target-arrow" aria-hidden="true">SSH / SFTP</div>
+                <article>
+                  <span class="target-protocol">Ваши Linux-серверы</span>
+                  <strong>Команды и файлы</strong>
+                  <small>Файлы остаются на целевом сервере. WebTerm передаёт операции по защищённому каналу.</small>
+                </article>
+              </div>
+
+              <div class="ai-flow">
+                <div class="ai-flow-head">
+                  <span class="ai-badge">AI</span>
+                  <div>
+                    <strong>В модель уходит только подготовленный контекст</strong>
+                    <small>WebTerm собирает данные для конкретного запроса и маскирует известные форматы ключей и токенов.</small>
+                  </div>
+                </div>
+
+                <div class="ai-pipeline" aria-label="Маршрут запроса к AI">
+                  <span>Ваш вопрос</span><i aria-hidden="true">→</i>
+                  <span>Выбранный контекст</span><i aria-hidden="true">→</i>
+                  <span class="filter-step">Фильтр секретов</span><i aria-hidden="true">→</i>
+                  <span class="local-step">Локальный ИИ</span>
+                </div>
+
+                <div class="ai-visibility">
+                  <article class="ai-sees">
+                    <h3><span>✓</span> ИИ видит</h3>
+                    <p>Ваш вопрос, выбранные команды, часть вывода и сведения о текущем сервере — только когда они добавлены в контекст.</p>
+                  </article>
+                  <article class="ai-hidden">
+                    <h3><span>×</span> ИИ не получает автоматически</h3>
+                    <p>SSH- и sudo-пароли, приватные ключи, все файлы, полный терминал и данные других проектов.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cloud-branch">
+            <div class="cloud-line" aria-hidden="true"></div>
+            <div>
+              <span>Необязательно</span>
+              <strong>Облачный ИИ</strong>
+              <p>Если владелец включит провайдера, подготовленный запрос уйдёт ему по HTTPS. Без этой настройки внешней отправки в ИИ нет.</p>
+            </div>
+          </div>
+
+          <div class="trust-bottom-line">
+            <span><b>В канале:</b> HTTPS/WSS и SSH/SFTP</span>
+            <span><b>В хранилище:</b> секреты шифруются отдельным ключом</span>
+            <span><b>Перед действием:</b> проверяются права и целевой сервер</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Previous detailed data map is retained only as source material. -->
+    <section class="block band data-block" id="data-legacy" hidden aria-hidden="true">
+      <div class="shell">
         <div class="block-head data-head">
-          <p class="kicker"><span>// 03</span> данные</p>
-          <h2>Какие данные проходят через WebTerm</h2>
-          <p class="sub">PostgreSQL и Redis работают на хосте с WebTerm. Облачный LLM получает запросы только после настройки провайдера.</p>
+          <p class="kicker"><span>// 04</span> данные</p>
+          <h2>Карта данных: от браузера до сервера</h2>
+          <p class="sub">Сначала — общая схема. Ниже можно открыть конкретный сценарий и увидеть, что передаётся, что возвращается, где остаётся запись и какая проверка срабатывает.</p>
         </div>
 
-        <div class="data-flows">
-          <article class="data-flow">
-            <div class="flow-step"><span>Браузер</span><b>HTTPS / TLS →</b><span>WebTerm</span></div>
-            <div class="flow-copy"><strong>Вход в панель</strong><p>Django использует серверную сессию, а изменяющие запросы требуют CSRF-токен. В рабочей установке TLS завершается на nginx; сертификат настраивает владелец.</p></div>
-          </article>
-          <article class="data-flow">
-            <div class="flow-step"><span>WebTerm</span><b>SSH / HTTPS ⇄</b><span>Системы клиента</span></div>
-            <div class="flow-copy"><strong>SSH и файлы</strong><p>Серверная часть отправляет команды и файлы на выбранный хост, затем возвращает вывод в браузер. Первый доступ требует явного доверия отпечатку SSH host key.</p></div>
-          </article>
-          <article class="data-flow local-flow">
-            <div class="flow-step"><span>WebTerm</span><b>контекст →</b><span>Local AI</span></div>
-            <div class="flow-copy"><strong>Ollama по вашему адресу</strong><p>Если выбран Ollama, запрос и добавленный контекст отправляются на настроенный адрес. При локальном адресе внешний LLM в этом запросе не участвует.</p></div>
-          </article>
-          <article class="data-flow optional-flow">
-            <div class="flow-step"><span>WebTerm</span><b>TLS ⇢</b><span>Cloud AI</span></div>
-            <div class="flow-copy"><strong>Облачный LLM — по выбору</strong><p>Запрос и включённый контекст уходят выбранному провайдеру. WebTerm маскирует известные форматы секретов, но контекст всё равно нужно считать внешней передачей данных.</p></div>
-          </article>
+        <div class="data-legend" aria-label="Обозначения схемы">
+          <span><i class="legend-dot required"></i> основной маршрут</span>
+          <span><i class="legend-dot internal"></i> внутри установки</span>
+          <span><i class="legend-dot optional"></i> только после настройки</span>
+          <span><i class="legend-dot external"></i> внешняя система</span>
         </div>
 
-        <div class="storage-grid" aria-label="Хранение данных">
-          <article class="storage-item">
-            <span class="storage-label">PostgreSQL</span>
-            <h3>Основные записи</h3>
-            <p>Пользователи, проекты, серверы, запуски и события аудита.</p>
-            <small>Резервное копирование настраивает оператор</small>
+        <div class="data-topology" aria-label="Общая схема движения данных">
+          <article class="topology-zone browser-zone">
+            <div class="zone-label">01 · пользователь</div>
+            <div class="topology-node node-browser">
+              <span class="node-icon" aria-hidden="true">▣</span>
+              <div><strong>Браузер</strong><small>Интерфейс WebTerm</small></div>
+            </div>
+            <ul>
+              <li>логин и пароль при входе</li>
+              <li>session cookie после входа</li>
+              <li>команды, файлы и запросы</li>
+            </ul>
           </article>
-          <article class="storage-item">
-            <span class="storage-label">Redis</span>
-            <h3>Сессии и очереди</h3>
-            <p>Сессии пользователей, кэш, WebSocket-события и фоновые задачи.</p>
-            <small>Redis обязателен для pilot-конфигурации</small>
+
+          <div class="topology-arrow arrow-in" aria-hidden="true">
+            <span>HTTPS · WSS</span><i></i>
+          </div>
+
+          <article class="topology-zone platform-zone">
+            <div class="zone-label">02 · один Linux-хост</div>
+            <div class="platform-title"><strong>WebTerm</strong><span>self-hosted установка</span></div>
+            <div class="platform-layers">
+              <div class="layer edge-layer"><span>Входящий трафик</span><b>nginx · TLS</b></div>
+              <div class="layer core-layer"><span>Проверки и API</span><b>Django · Channels</b></div>
+              <div class="layer worker-layer"><span>Фоновые задания</span><b>Workers · Celery</b></div>
+            </div>
+            <div class="platform-stores">
+              <div><b>PostgreSQL</b><small>постоянные записи</small></div>
+              <div><b>Redis</b><small>каналы, кэш, очереди</small></div>
+              <div class="secret-store"><b>ManagedSecret</b><small>зашифрованные значения</small></div>
+            </div>
           </article>
-          <article class="storage-item secure">
-            <span class="storage-label">Managed secrets</span>
-            <h3>Управляемые секреты</h3>
-            <p>Учётные данные и API-ключи сохраняются в зашифрованных контейнерах. Интерфейс получает ссылку и метаданные, а не исходное значение.</p>
-            <small>Ключ шифрования задаёт оператор</small>
-          </article>
+
+          <div class="topology-arrow arrow-out" aria-hidden="true">
+            <span>SSH · SFTP · HTTPS</span><i></i>
+          </div>
+
+          <div class="destination-zone">
+            <div class="zone-label">03 · назначения</div>
+            <article class="destination-card required-dest">
+              <span class="destination-protocol">SSH / SFTP</span>
+              <strong>Linux-серверы</strong>
+              <small>команды, файлы, метрики</small>
+            </article>
+            <article class="destination-card internal-dest">
+              <span class="destination-protocol">HTTP(S)</span>
+              <strong>Локальный Ollama</strong>
+              <small>если настроен локальный адрес</small>
+            </article>
+            <article class="destination-card external-dest">
+              <span class="destination-protocol">HTTPS · optional</span>
+              <strong>Облачный LLM</strong>
+              <small>запрос и выбранный контекст</small>
+            </article>
+            <article class="destination-card preview-dest">
+              <span class="destination-protocol">HTTPS · preview</span>
+              <strong>MCP и уведомления</strong>
+              <small>только для включённых узлов</small>
+            </article>
+          </div>
         </div>
 
-        <div class="deployment-row">
-          <div><strong>Пилотная конфигурация</strong><span>Один Linux-хост, Docker Compose, PostgreSQL, Redis и nginx с TLS.</span></div>
-          <div><strong>За границами версии</strong><span>High availability, несколько рабочих узлов, публичный multi-tenant SaaS и запуск самого WebTerm в Kubernetes.</span></div>
+        <div class="route-explorer">
+          <div class="route-explorer-head">
+            <div>
+              <p class="route-eyebrow">Разобрать по шагам</p>
+              <h3>Выберите действие пользователя</h3>
+            </div>
+            <p>Каждая вкладка показывает полный маршрут данных без общих слов.</p>
+          </div>
+
+          <div class="route-tabs" role="tablist" aria-label="Маршруты данных">
+            <button class="route-tab is-on" id="route-tab-login" type="button" role="tab" aria-selected="true" aria-controls="route-login" data-route="login"><span>01</span> Вход</button>
+            <button class="route-tab" id="route-tab-terminal" type="button" role="tab" aria-selected="false" aria-controls="route-terminal" data-route="terminal" tabindex="-1"><span>02</span> Терминал</button>
+            <button class="route-tab" id="route-tab-files" type="button" role="tab" aria-selected="false" aria-controls="route-files" data-route="files" tabindex="-1"><span>03</span> Файлы</button>
+            <button class="route-tab" id="route-tab-ai" type="button" role="tab" aria-selected="false" aria-controls="route-ai" data-route="ai" tabindex="-1"><span>04</span> AI</button>
+            <button class="route-tab" id="route-tab-automation" type="button" role="tab" aria-selected="false" aria-controls="route-automation" data-route="automation" tabindex="-1"><span>05</span> Автоматизация</button>
+          </div>
+
+          <div class="route-panels">
+            <article class="route-panel is-on" id="route-login" role="tabpanel" aria-labelledby="route-tab-login" data-route-panel="login">
+              <div class="route-path-line"><span>Браузер</span><b>HTTPS</b><span>nginx</span><b>HTTP внутри Docker-сети</b><span>Django</span></div>
+              <div class="route-title-row"><h4>Пользователь входит в WebTerm</h4><span class="route-scope core">основная функция</span></div>
+              <div class="route-facts">
+                <div><span class="fact-no">A</span><strong>Передаётся</strong><p>Логин, пароль и CSRF-токен. После успешного входа браузер отправляет session cookie вместо пароля.</p></div>
+                <div><span class="fact-no">B</span><strong>Возвращается</strong><p>Статус сессии, профиль пользователя, активный проект и список разрешённых функций.</p></div>
+                <div><span class="fact-no">C</span><strong>Сохраняется</strong><p>Хэш пароля, серверная сессия и события входа, выхода или неудачной попытки — в PostgreSQL.</p></div>
+                <div><span class="fact-no">D</span><strong>Проверяется</strong><p>CSRF, origin/host, ограничение попыток входа, активность пользователя и его права. Secure-cookie и TLS зависят от production-настройки.</p></div>
+              </div>
+            </article>
+
+            <article class="route-panel" id="route-terminal" role="tabpanel" aria-labelledby="route-tab-terminal" data-route-panel="terminal" hidden>
+              <div class="route-path-line"><span>Браузер</span><b>WSS</b><span>WebTerm</span><b>SSH</b><span>Linux-сервер</span></div>
+              <div class="route-title-row"><h4>Пользователь открывает SSH-терминал</h4><span class="route-scope core">основная функция</span></div>
+              <div class="route-facts">
+                <div><span class="fact-no">A</span><strong>Передаётся</strong><p>В WebSocket идут нажатия клавиш и размер окна. На сервер уходят SSH-учётные данные и введённые команды.</p></div>
+                <div><span class="fact-no">B</span><strong>Возвращается</strong><p>Поток вывода терминала, коды завершения захваченных команд и сообщения об ошибках соединения.</p></div>
+                <div><span class="fact-no">C</span><strong>Сохраняется</strong><p>Метаданные соединения, команды и результаты, которые удалось связать с командой. Это история команд, а не полная видеозапись терминала.</p></div>
+                <div><span class="fact-no">D</span><strong>Проверяется</strong><p>Сессия пользователя, право на раздел, доступ к конкретному хосту и trusted host key. Отзыв доступа закрывает активное соединение.</p></div>
+              </div>
+            </article>
+
+            <article class="route-panel" id="route-files" role="tabpanel" aria-labelledby="route-tab-files" data-route-panel="files" hidden>
+              <div class="route-path-line"><span>Браузер</span><b>HTTPS</b><span>WebTerm</span><b>SFTP</b><span>Linux-сервер</span></div>
+              <div class="route-title-row"><h4>Пользователь просматривает или меняет файл</h4><span class="route-scope core">основная функция</span></div>
+              <div class="route-facts">
+                <div><span class="fact-no">A</span><strong>Передаётся</strong><p>Путь, имя операции и содержимое файла при загрузке или сохранении. Для sudo-операции используется отдельный серверный секрет.</p></div>
+                <div><span class="fact-no">B</span><strong>Возвращается</strong><p>Список каталогов, метаданные файлов, содержимое для редактора или поток скачивания.</p></div>
+                <div><span class="fact-no">C</span><strong>Сохраняется</strong><p>Сам файл остаётся на целевом сервере. WebTerm не переносит его в PostgreSQL; события файловых операций пишутся в аудит только при включённой настройке.</p></div>
+                <div><span class="fact-no">D</span><strong>Проверяется</strong><p>Доступ пользователя к хосту, тип SSH-сервера, trusted host key и права удалённой учётной записи на выбранный путь.</p></div>
+              </div>
+            </article>
+
+            <article class="route-panel" id="route-ai" role="tabpanel" aria-labelledby="route-tab-ai" data-route-panel="ai" hidden>
+              <div class="route-path-line"><span>WebTerm</span><b>HTTP(S)</b><span>Ollama</span><i>или</i><span>Cloud LLM</span></div>
+              <div class="route-title-row"><h4>Пользователь обращается к AI</h4><span class="route-scope optional">по настройке</span></div>
+              <div class="route-facts">
+                <div><span class="fact-no">A</span><strong>Передаётся</strong><p>Запрос, системная инструкция и включённый контекст. В терминале это могут быть cwd, недавние команды, часть вывода и память сервера.</p></div>
+                <div><span class="fact-no">B</span><strong>Возвращается</strong><p>Поток текста, план или предложение инструмента. Команда на сервер не должна выполняться только потому, что её предложила модель.</p></div>
+                <div><span class="fact-no">C</span><strong>Сохраняется</strong><p>История AI-диалога и события аудита могут храниться в WebTerm. Срок хранения запроса у облачного провайдера задаётся его условиями.</p></div>
+                <div><span class="fact-no">D</span><strong>Проверяется</strong><p>Известные форматы ключей и токенов маскируются перед отправкой. Это шаблонный фильтр, поэтому выбранный контекст всё равно считается внешней передачей.</p></div>
+              </div>
+            </article>
+
+            <article class="route-panel" id="route-automation" role="tabpanel" aria-labelledby="route-tab-automation" data-route-panel="automation" hidden>
+              <div class="route-path-line"><span>WebTerm</span><b>Redis queue</b><span>Worker</span><b>SSH / HTTPS</b><span>Цель</span></div>
+              <div class="route-title-row"><h4>Запускается Playbook, pipeline или агент</h4><span class="route-scope preview">preview</span></div>
+              <div class="route-facts">
+                <div><span class="fact-no">A</span><strong>Передаётся</strong><p>Идентификатор проекта, цели, шаги сценария, обычные переменные и ссылки на секреты. Значения секретов раскрываются только серверному исполнителю.</p></div>
+                <div><span class="fact-no">B</span><strong>Возвращается</strong><p>Статус шагов, ограниченные логи, код завершения, отчёт и созданные артефакты.</p></div>
+                <div><span class="fact-no">C</span><strong>Сохраняется</strong><p>Определение сценария, запуск, состояние шагов и аудит — в PostgreSQL. Redis переносит задания и события между процессами.</p></div>
+                <div><span class="fact-no">D</span><strong>Проверяется</strong><p>Проектная принадлежность, разрешённые инструменты, dry-run и approval для изменяющих действий. Конкретный набор проверок зависит от типа узла.</p></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="storage-section">
+          <div class="storage-section-head">
+            <div><p class="route-eyebrow">Хранение</p><h3>Где что лежит</h3></div>
+            <p>PostgreSQL хранит состояние продукта. Redis помогает процессам обмениваться событиями. Секреты живут в PostgreSQL только в зашифрованном виде.</p>
+          </div>
+          <div class="storage-grid deep-storage" aria-label="Хранение данных">
+            <article class="storage-item">
+              <span class="storage-label">PostgreSQL</span>
+              <h3>Постоянные записи</h3>
+              <p>Пользователи и сессии, проекты, серверы, trusted fingerprints, история команд, запуски и аудит.</p>
+              <small>Нужны резервные копии и проверка восстановления</small>
+            </article>
+            <article class="storage-item">
+              <span class="storage-label">Redis</span>
+              <h3>Транспорт и кэш</h3>
+              <p>Channels для WebSocket, кэш, Celery broker/result backend и временное состояние очередей.</p>
+              <small>Не является источником инвентаря серверов</small>
+            </article>
+            <article class="storage-item secure">
+              <span class="storage-label">ManagedSecret</span>
+              <h3>Секретные значения</h3>
+              <p>SSH/sudo-пароли, API-ключи LLM, переменные Playbook, MCP и уведомлений.</p>
+              <small>Шифруются отдельным ключом с поддержкой ротации</small>
+            </article>
+            <article class="storage-item external-store">
+              <span class="storage-label">Target / provider</span>
+              <h3>За пределами WebTerm</h3>
+              <p>Файлы остаются на Linux-серверах. Запросы облачному LLM обрабатываются по правилам выбранного провайдера.</p>
+              <small>WebTerm не управляет внешним сроком хранения</small>
+            </article>
+          </div>
+        </div>
+
+        <div class="data-boundaries">
+          <article class="boundary-card webterm-boundary">
+            <span>WebTerm проверяет</span>
+            <h3>Кто и к чему обращается</h3>
+            <p>Сессии, CSRF, права проекта, доступ к серверу, SSH host key, ссылки на секреты и журналируемые действия.</p>
+          </article>
+          <article class="boundary-card owner-boundary">
+            <span>Владелец настраивает</span>
+            <h3>Контур вокруг WebTerm</h3>
+            <p>TLS-сертификат, firewall/VPN, ключ шифрования, резервные копии, права SSH-аккаунтов и политики внешних провайдеров.</p>
+          </article>
+          <article class="boundary-card limit-boundary">
+            <span>Важно понимать</span>
+            <h3>Self-hosted не означает «без исходящего трафика»</h3>
+            <p>Облачный LLM, MCP или уведомления создают внешний маршрут. Он появляется только после настройки, но его нужно учитывать в модели данных.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -391,7 +821,7 @@
     <section class="block" id="depth">
       <div class="shell">
         <div class="block-head">
-          <p class="kicker"><span>// 04</span> границы версии</p>
+          <p class="kicker"><span>// 05</span> границы версии</p>
           <h2>Что работает в v0.2.1</h2>
           <p class="sub">Статусы ниже относятся к профилю выпуска для одного внутреннего пилотного контура.</p>
         </div>
@@ -445,11 +875,115 @@
       </div>
     </section>
 
+    <!-- ROADMAP -->
+    <section class="block band" id="roadmap">
+      <div class="shell">
+        <div class="block-head">
+          <p class="kicker"><span>// 06</span> дорожная карта</p>
+          <h2>Что уже работает и что дальше</h2>
+          <p class="sub">Preview-функции ещё меняются. Готовыми они считаются только после тестов и отдельного выпуска.</p>
+        </div>
+
+        <div class="roadmap-track">
+          <article class="roadmap-step current-step">
+            <span class="roadmap-status">Работает</span>
+            <h3>Операции с серверами</h3>
+            <ul>
+              <li>инвентарь серверов;</li>
+              <li>SSH-терминал, SFTP и файлы;</li>
+              <li>мониторинг и алерты;</li>
+              <li>проекты, секреты и аудит.</li>
+            </ul>
+          </article>
+
+          <div class="roadmap-arrow" aria-hidden="true">→</div>
+
+          <article class="roadmap-step active-step">
+            <span class="roadmap-status">Развиваем · preview</span>
+            <h3>Автоматизация и модели</h3>
+            <ul>
+              <li>Playbooks и подтверждение запусков;</li>
+              <li>агенты и операторский чат;</li>
+              <li>память серверов и черновики Skills;</li>
+              <li>Studio pipelines, dry-run и MCP.</li>
+            </ul>
+          </article>
+
+          <div class="roadmap-arrow" aria-hidden="true">→</div>
+
+          <article class="roadmap-step next-step">
+            <span class="roadmap-status">Следующий этап</span>
+            <h3>Ежедневные операции</h3>
+            <ul>
+              <li>состояние сервера, алерты и запуски на одном экране;</li>
+              <li>алерт → runbook → подтверждение → проверка результата;</li>
+              <li>сохранённые фильтры и рабочие представления.</li>
+            </ul>
+          </article>
+
+          <div class="roadmap-arrow" aria-hidden="true">→</div>
+
+          <article class="roadmap-step later-step">
+            <span class="roadmap-status">После этого</span>
+            <h3>Обзор инфраструктуры</h3>
+            <ul>
+              <li>состояние группы серверов и инциденты;</li>
+              <li>ограниченные массовые запуски Playbooks;</li>
+              <li>отчёты для передачи смены;</li>
+              <li>проверка нагрузки и границ пилота.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="roadmap-future-head">
+          <h3>Долгосрочные направления</h3>
+          <p>Эти этапы пока без версии и даты. Они начнутся только после проверки основной дорожной карты на реальном пилоте.</p>
+        </div>
+
+        <div class="roadmap-future-grid">
+          <article class="roadmap-step future-step">
+            <span class="roadmap-status">Этап 5 · кандидат</span>
+            <h3>Windows-машины</h3>
+            <ul>
+              <li>инвентарь и состояние Windows-хостов;</li>
+              <li>ограниченные удалённые действия;</li>
+              <li>отдельный endpoint-агент и подписанный установщик;</li>
+              <li>установка, обновление и отключение устройства.</li>
+            </ul>
+          </article>
+
+          <article class="roadmap-step future-step">
+            <span class="roadmap-status">Этап 6 · отключено сейчас</span>
+            <h3>Kubernetes</h3>
+            <ul>
+              <li>кластеры, namespaces, workloads и pods;</li>
+              <li>логи, события и диагностика;</li>
+              <li>отдельные админ-сессии и подтверждения;</li>
+              <li>изменения в кластере — только после release-проверок.</li>
+            </ul>
+          </article>
+
+          <article class="roadmap-step future-step">
+            <span class="roadmap-status">Этап 7 · направление</span>
+            <h3>Плагины и расширения</h3>
+            <ul>
+              <li>локальные пакеты <code>.wtp</code>;</li>
+              <li>приватный каталог команды;</li>
+              <li>проверка прав, секретов и внешних соединений;</li>
+              <li>отключение, обновление, откат и карантин.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="roadmap-limit"><strong>Пока без утверждённого этапа:</strong> MARS, публичный SaaS и HA-кластер WebTerm. Windows endpoint management также остаётся кандидатом, а не начатой реализацией.</p>
+      </div>
+    </section>
+
     <!-- INSTALL -->
     <section class="block" id="install">
       <div class="shell">
         <div class="block-head">
-          <p class="kicker"><span>// 05</span> установка</p>
+          <p class="kicker"><span>// 07</span> установка</p>
           <h2>Установка на отдельный Linux-хост</h2>
           <p class="sub">
             Репозиторий
@@ -524,7 +1058,7 @@ python manage.py runserver 0.0.0.0:9000</code></pre>
     <!-- TRUTH -->
     <section class="block band" id="truth">
       <div class="shell truth">
-        <p class="kicker"><span>// 06</span> статус проекта</p>
+        <p class="kicker"><span>// 08</span> статус проекта</p>
         <h2>Текущая версия — <a href="https://github.com/LLprod39/WebTerm/releases/tag/v0.2.1" target="_blank" rel="noopener noreferrer">v0.2.1</a></h2>
         <div class="truth-grid">
           <p>
@@ -537,8 +1071,7 @@ python manage.py runserver 0.0.0.0:9000</code></pre>
           </p>
         </div>
         <div class="truth-actions">
-          <a class="btn-hard lg" href="https://llprod39.github.io/WebTerm-Demo/?v=4" target="_blank" rel="noopener noreferrer">Открыть демо</a>
-          <a class="btn-ghost lg" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn-hard lg" href="https://github.com/LLprod39/WebTerm" target="_blank" rel="noopener noreferrer">Открыть GitHub</a>
           <a class="btn-ghost lg" href="#install">К установке</a>
         </div>
       </div>
