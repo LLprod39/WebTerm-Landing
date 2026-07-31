@@ -17,15 +17,35 @@
 
   /* mobile nav */
   if (burger && nav) {
-    burger.addEventListener("click", function () {
-      const open = nav.classList.toggle("is-open");
+    function setMenuOpen(open) {
+      nav.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    burger.addEventListener("click", function () {
+      setMenuOpen(!nav.classList.contains("is-open"));
     });
+
     nav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
-        nav.classList.remove("is-open");
-        burger.setAttribute("aria-expanded", "false");
+        setMenuOpen(false);
       });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && nav.classList.contains("is-open")) {
+        setMenuOpen(false);
+        burger.focus();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!nav.classList.contains("is-open")) return;
+      if (!nav.contains(event.target) && !burger.contains(event.target)) setMenuOpen(false);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 860) setMenuOpen(false);
     });
   }
 
@@ -433,7 +453,7 @@
   /* clipboard */
   function showToast(message) {
     if (!toast) return;
-    toast.textContent = message || "copied";
+    toast.textContent = message || "Скопировано";
     toast.hidden = false;
     requestAnimationFrame(function () {
       toast.classList.add("is-visible");
@@ -484,15 +504,15 @@
       const ok = await copyText(text);
       if (ok) {
         const prev = btn.textContent;
-        btn.textContent = "ok";
+        btn.textContent = "Готово";
         btn.classList.add("is-copied");
-        showToast("copied");
+        showToast("Скопировано");
         setTimeout(function () {
           btn.textContent = prev;
           btn.classList.remove("is-copied");
         }, 1400);
       } else {
-        showToast("copy failed");
+        showToast("Не удалось скопировать");
       }
     });
   });
